@@ -1,0 +1,723 @@
+/* **Default color Theme** ==============================================*/
+body.theme_default {
+  /*==============================================
+  variable
+  ================================================*/
+
+  /*==============================================
+  Start STying
+  ================================================*/
+
+  background-image: url('../images/body_bg.png');
+  background-color: #dcdbda;
+}
+body.theme_default #top_header {
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+body.theme_default #top_header .main_navbar li a:hover {
+  background: #ce4e4a;
+}
+body.theme_default #top_header .main_navbar li.active {
+  background: #ce4e4a;
+}
+body.theme_default #top_header .main_navbar li.active a {
+  color: #ffffff !important;
+}
+body.theme_default #top_header .main_navbar a {
+  color: #ffffff !important;
+}
+body.theme_default #top_header .main_navbar .dropdown.open {
+  background: #ce4e4a;
+}
+body.theme_default #top_header.mini_menu {
+  background: #232323;
+}
+body.theme_default #content_top {
+  background: #333333;
+}
+body.theme_default #logo_message_area {
+  background-color: #2b2c2c;
+}
+body.theme_default #logo_message_area .logo {
+  background: #2b2c2c;
+}
+body.theme_default #content .box_spa {
+  background: #ce4e4a;
+}
+body.theme_default #content .circle_hover:hover {
+  border: 5px solid #ce4e4a;
+}
+body.theme_default #content .boxfeature .img_preview h4 {
+  background-color: #333333;
+}
+body.theme_default #content .link_acomodation li a {
+  background: #333333;
+}
+body.theme_default #content .link_acomodation li a:after {
+  border-left: 10px solid #333333;
+}
+body.theme_default #content .link_acomodation li.active a {
+  background: #ce4e4a;
+}
+body.theme_default #content .link_acomodation li.active a:after {
+  border-left: 10px solid #ce4e4a;
+}
+body.theme_default #content .link_socials a {
+  background: #ce4e4a;
+}
+body.theme_default #content .link_socials a:hover {
+  background: #232323;
+}
+body.theme_default #content .grid_accomodation .price,
+body.theme_default #content .grid_extras .price {
+  background: #232323;
+}
+body.theme_default #content .box.block {
+  border-bottom: 1px solid #232323;
+}
+body.theme_default #content .tags a {
+  background: #ce4e4a;
+}
+body.theme_default #content .tags a:hover {
+  background: #232323;
+}
+body.theme_default #content .comments ul li .reply {
+  color: #ce4e4a;
+}
+body.theme_default #content .comments .comment_inner {
+  border-bottom: 1px solid #ce4e4a;
+}
+body.theme_default #content .lobster_tab li a {
+  background: #232323;
+}
+body.theme_default #content .lobster_tab li.active a {
+  background: #ce4e4a;
+}
+body.theme_default #content .grid_btn_reservations .panel.bg1 {
+  background: #ce4e4a;
+}
+body.theme_default #content .grid_btn_reservations .panel.bg2 {
+  background: #333333;
+}
+body.theme_default #content .lobster_calendar .fc-border-separate tr.fc-last th {
+  background: #ce4e4a;
+}
+body.theme_default #content .lobster_calendar .fc-event {
+  background: #ce4e4a;
+}
+body.theme_default #footer {
+  background-color: #333333;
+}
+body.theme_default #footer .link_socials a {
+  background: #232323;
+}
+body.theme_default #footer .link_socials a:hover {
+  background: #ce4e4a;
+}
+body.theme_default #footer .subcrible {
+  background-color: #232323;
+}
+body.theme_default #footer .footer_bottom {
+  background-color: #211d1d;
+}
+body.theme_default .btn-inverse {
+  background-color: #211d1d;
+}
+body.theme_default .btn-inverse:hover {
+  background-color: #030000;
+}
+body.theme_default .btn-primary {
+  background-color: #ce4e4a;
+}
+body.theme_default .btn-primary:hover {
+  background-color: #b0302c;
+}
+/* **END Default color Theme** ==============================================*/
+/* **Default color Blue Theme** ==============================================*/
+body.theme_blue {
+  /*==============================================
+  variable
+  ================================================*/
+
+  /*==============================================
+  Start STying
+  ================================================*/
+
+  background-image: none;
+  background-color: #5b636a;
+}
+body.theme_blue #top_header {
+  color: #ffffff;
+  background-color: rgba(14, 33, 42, 0.8);
+}
+body.theme_blue #top_header .main_navbar li a:hover {
+  background: #4baad3;
+}
+body.theme_blue #top_header .main_navbar li.active {
+  background: #4baad3;
+}
+body.theme_blue #top_header .main_navbar li.active a {
+  color: #ffffff !important;
+}
+body.theme_blue #top_header .main_navbar a {
+  color: #ffffff !important;
+}
+body.theme_blue #top_header .main_navbar .dropdown.open {
+  background: #4baad3;
+}
+body.theme_blue #top_header.mini_menu {
+  background: #0e1d23;
+}
+body.theme_blue #content_top {
+  background: #0e1d23;
+}
+body.theme_blue #logo_message_area {
+  background-color: #0e212a;
+}
+body.theme_blue #logo_message_area .logo {
+  background: #0e212a;
+}
+body.theme_blue #content .box_spa {
+  background: #4baad3;
+}
+body.theme_blue #content .circle_hover:hover {
+  border: 5px solid #4baad3;
+}
+body.theme_blue #content .boxfeature .img_preview h4 {
+  background-color: #0e1d23;
+}
+body.theme_blue #content .link_acomodation li a {
+  background: #0e1d23;
+}
+body.theme_blue #content .link_acomodation li a:after {
+  border-left: 10px solid #0e1d23;
+}
+body.theme_blue #content .link_acomodation li.active a {
+  background: #4baad3;
+}
+body.theme_blue #content .link_acomodation li.active a:after {
+  border-left: 10px solid #4baad3;
+}
+body.theme_blue #content .link_socials a {
+  background: #4baad3;
+}
+body.theme_blue #content .link_socials a:hover {
+  background: #0e1d23;
+}
+body.theme_blue #content .grid_accomodation .price,
+body.theme_blue #content .grid_extras .price {
+  background: #0e212a;
+}
+body.theme_blue #content .box.block {
+  border-bottom: 1px solid #4baad3;
+}
+body.theme_blue #content .tags a {
+  background: #4baad3;
+}
+body.theme_blue #content .tags a:hover {
+  background: #0e1d23;
+}
+body.theme_blue #content .comments ul li .reply {
+  color: #4baad3;
+}
+body.theme_blue #content .comments .comment_inner {
+  border-bottom: 1px solid #4baad3;
+}
+body.theme_blue #content .lobster_tab li a {
+  background: #0e1d23;
+}
+body.theme_blue #content .lobster_tab li.active a {
+  background: #4baad3;
+}
+body.theme_blue #content .grid_btn_reservations .panel.bg1 {
+  background: #4194b8;
+}
+body.theme_blue #content .grid_btn_reservations .panel.bg2 {
+  background: #0e212a;
+}
+body.theme_blue #content .lobster_calendar .fc-border-separate tr.fc-last th {
+  background: #4194b8;
+}
+body.theme_blue #content .lobster_calendar .fc-event {
+  background: #4194b8;
+}
+body.theme_blue #footer {
+  background-color: #0e212a;
+}
+body.theme_blue #footer .link_socials a {
+  background: #0e1d23;
+}
+body.theme_blue #footer .link_socials a:hover {
+  background: #4baad3;
+}
+body.theme_blue #footer .subcrible {
+  background-color: #0e1d23;
+}
+body.theme_blue #footer .footer_bottom {
+  background-color: #0c161c;
+}
+body.theme_blue .btn-inverse {
+  background-color: #0c161c;
+}
+body.theme_blue .btn-inverse:hover {
+  background-color: #000000;
+}
+body.theme_blue .btn-primary {
+  background-color: #4baad3;
+}
+body.theme_blue .btn-primary:hover {
+  background-color: #005a83;
+}
+/* **END Default color BLUE Theme** ==============================================*/
+/* **START Default color GREEN Theme** ==============================================*/
+body.theme_green {
+  /*==============================================
+  variable
+  ================================================*/
+
+  /*==============================================
+  Start STying
+  ================================================*/
+
+  background-image: none;
+  background-color: #dcdcdc;
+}
+body.theme_green #top_header {
+  color: #ffffff;
+  background-color: rgba(36, 38, 40, 0.8);
+}
+body.theme_green #top_header .main_navbar li a:hover {
+  background: #2ecc71;
+}
+body.theme_green #top_header .main_navbar li.active {
+  background: #2ecc71;
+}
+body.theme_green #top_header .main_navbar li.active a {
+  color: #ffffff !important;
+}
+body.theme_green #top_header .main_navbar a {
+  color: #ffffff !important;
+}
+body.theme_green #top_header .main_navbar .dropdown.open {
+  background: #2ecc71;
+}
+body.theme_green #top_header.mini_menu {
+  background: #242628;
+}
+body.theme_green #content_top {
+  background: #333333;
+}
+body.theme_green #logo_message_area {
+  background-color: #242628;
+}
+body.theme_green #logo_message_area .logo {
+  background-color: #242628;
+}
+body.theme_green #content .box_spa {
+  background: #2ecc71;
+}
+body.theme_green #content .circle_hover:hover {
+  border: 5px solid #2ecc71;
+}
+body.theme_green #content .boxfeature .img_preview h4 {
+  background-color: #333333;
+}
+body.theme_green #content .link_acomodation li a {
+  background: #333333;
+}
+body.theme_green #content .link_acomodation li a:after {
+  border-left: 10px solid #333333;
+}
+body.theme_green #content .link_acomodation li.active a {
+  background: #2ecc71;
+}
+body.theme_green #content .link_acomodation li.active a:after {
+  border-left: 10px solid #2ecc71;
+}
+body.theme_green #content .link_socials a {
+  background: #2ecc71;
+}
+body.theme_green #content .link_socials a:hover {
+  background: #333333;
+}
+body.theme_green #content .grid_accomodation .price,
+body.theme_green #content .grid_extras .price {
+  background: #0e212a;
+}
+body.theme_green #content .box.block {
+  border-bottom: 1px solid #2ecc71;
+}
+body.theme_green #content .tags a {
+  background: #2ecc71;
+}
+body.theme_green #content .tags a:hover {
+  background: #333333;
+}
+body.theme_green #content .comments ul li .reply {
+  color: #2ecc71;
+}
+body.theme_green #content .comments .comment_inner {
+  border-bottom: 1px solid #2ecc71;
+}
+body.theme_green #content .lobster_tab li a {
+  background: #333333;
+}
+body.theme_green #content .lobster_tab li.active a {
+  background: #2ecc71;
+}
+body.theme_green #content .grid_btn_reservations .panel.bg1 {
+  background: #2ecc71;
+}
+body.theme_green #content .grid_btn_reservations .panel.bg2 {
+  background: #333333;
+}
+body.theme_green #content .lobster_calendar .fc-border-separate tr.fc-last th {
+  background: #2ecc71;
+}
+body.theme_green #content .lobster_calendar .fc-event {
+  background: #2ecc71;
+}
+body.theme_green #footer {
+  background-color: #242628;
+}
+body.theme_green #footer .link_socials a {
+  background: #333333;
+}
+body.theme_green #footer .link_socials a:hover {
+  background: #181818;
+}
+body.theme_green #footer .subcrible {
+  background-color: #333333;
+}
+body.theme_green #footer .footer_bottom {
+  background-color: #202223;
+}
+body.theme_green .btn-inverse {
+  background-color: #202223;
+}
+body.theme_green .btn-inverse:hover {
+  background-color: #0c0e0f;
+}
+body.theme_green .btn-primary {
+  background-color: #2ecc71;
+}
+body.theme_green .btn-primary:hover {
+  background-color: #007c21;
+}
+/* **END Default color GREEN Theme** ==============================================*/
+/* **START Default color BLACK Theme** ==============================================*/
+body.theme_black {
+  /*==============================================
+  variable
+  ================================================*/
+
+  /*==============================================
+  Start STying
+  ================================================*/
+
+  background-image: none;
+  background-color: #141414;
+}
+body.theme_black #wrapper .control_color {
+  background: #3d4445;
+}
+body.theme_black #top_header {
+  background-color: #242729;
+}
+body.theme_black #top_header .main_navbar li a:hover {
+  background: #3d4445;
+}
+body.theme_black #top_header .main_navbar li.active {
+  color: black!important;
+  background: #3d4445;
+}
+body.theme_black #top_header .main_navbar a {
+  color: #ffffff !important;
+}
+body.theme_black #top_header .main_navbar .dropdown.open {
+  background: #3d4445;
+}
+body.theme_black #top_header .main_navbar .dropdown.open a {
+  color: #ffffff !important;
+}
+body.theme_black #top_header.mini_menu {
+  background: #242729;
+}
+body.theme_black #logo_message_area {
+  background-color: #000000;
+}
+body.theme_black #logo_message_area .logo {
+  background: #000000;
+}
+body.theme_black #logo_message_area .inner-wrapper.driver_space {
+  background: #1e1f21 !important;
+}
+body.theme_black #logo_message_area .driver_space:before {
+  border-right: 10px solid #28292b !important;
+}
+body.theme_black #logo_message_area .driver_space:after {
+  border-left: 10px solid #28292b !important;
+}
+body.theme_black #content .inner-wrapper {
+  background-color: #1e1f21;
+  color: #ffffff;
+}
+body.theme_black #content .custumer_say li {
+  border: 1px solid #36393b;
+}
+body.theme_black #content .divater span {
+  background-color: #1e1f21;
+}
+body.theme_black #content .divater .line {
+  background: #3b3f42;
+}
+body.theme_black #content .events li {
+  border: 1px solid #3b3f42;
+}
+body.theme_black #content .events li:hover {
+  background: #3b3f42;
+}
+body.theme_black #content .box_spa {
+  background: #3d4445;
+}
+body.theme_black #content .circle_hover:hover {
+  border: 5px solid #c2a26f;
+}
+body.theme_black #content .boxfeature {
+  background: #36393b;
+}
+body.theme_black #content .boxfeature .img_preview h4 {
+  background-color: #000000;
+}
+body.theme_black #content .boxfeature:hover {
+  border: 1px solid #000000;
+}
+body.theme_black #content .grid_list_event .panel,
+body.theme_black #content .grid_list_blog .panel {
+  background: #36393b;
+  border: 1px solid #000000;
+}
+body.theme_black #content .grid_list_event .panel h4 a,
+body.theme_black #content .grid_list_blog .panel h4 a {
+  color: #ffffff;
+}
+body.theme_black #content .link_acomodation li a {
+  background: #3b3f42;
+}
+body.theme_black #content .link_acomodation li a:after {
+  border-left: 10px solid #3b3f42;
+}
+body.theme_black #content .link_acomodation li.active a {
+  background: #141414;
+}
+body.theme_black #content .link_acomodation li.active a:after {
+  border-left: 10px solid #141414;
+}
+body.theme_black #content .link_socials a {
+  background: #3b3f42;
+}
+body.theme_black #content .link_socials a:hover {
+  background: #141414;
+}
+body.theme_black #content .grid_accomodation .panel,
+body.theme_black #content .grid_extras .panel {
+  background: #3b3f42;
+}
+body.theme_black #content .grid_accomodation .item_grid .price,
+body.theme_black #content .grid_extras .item_grid .price {
+  background: rgba(0, 0, 0, 0.5);
+}
+body.theme_black #content .box.block {
+  background: #3b3f42;
+  padding: 5px;
+  color: #ffffff;
+  border-bottom: 1px solid #141414;
+}
+body.theme_black #content .box.block a {
+  color: #ffffff;
+}
+body.theme_black #content .feed article {
+  border-bottom: 0;
+}
+body.theme_black #content .feed article:before {
+  border-bottom: 1px solid #141414;
+}
+body.theme_black #content .blog-line {
+  background: #3b3f42;
+}
+body.theme_black #content .blog-line a {
+  color: #ffffff;
+}
+body.theme_black #content .tags a {
+  background: #515859;
+}
+body.theme_black #content .tags a:hover {
+  background: #000000;
+}
+body.theme_black #content .comments ul li .reply {
+  color: #000000;
+}
+body.theme_black #content .comments .comment_inner {
+  color: #ffffff;
+  background: #3b3f42;
+  border-bottom: 1px solid #000000;
+}
+body.theme_black #content .lobster_tab li a {
+  background: #000000;
+}
+body.theme_black #content .lobster_tab li.active a {
+  background: #3b3f42;
+}
+body.theme_black #content .lobster_tab_content div {
+  border: 1px solid #3b3f42;
+}
+body.theme_black #content .grid_btn_reservations .panel.bg1 {
+  background: #3b3f42;
+}
+body.theme_black #content .grid_btn_reservations .panel.bg2 {
+  background: #000000;
+}
+body.theme_black #content textarea,
+body.theme_black #content input[type="text"],
+body.theme_black #content input[type="password"],
+body.theme_black #content input[type="datetime"],
+body.theme_black #content input[type="datetime-local"],
+body.theme_black #content input[type="date"],
+body.theme_black #content input[type="month"],
+body.theme_black #content input[type="time"],
+body.theme_black #content input[type="week"],
+body.theme_black #content input[type="number"],
+body.theme_black #content input[type="email"],
+body.theme_black #content input[type="url"],
+body.theme_black #content input[type="search"],
+body.theme_black #content input[type="tel"],
+body.theme_black #content input[type="color"],
+body.theme_black #content .uneditable-input {
+  color: #ffffff !important;
+}
+body.theme_black #content .lobster_calendar .fc-border-separate tr.fc-last th {
+  background: #3b3f42;
+}
+body.theme_black #content .lobster_calendar .fc-event {
+  background: #3b3f42;
+}
+body.theme_black #content .lobster_calendar .fc-widget-header,
+body.theme_black #content .lobster_calendar .fc-widget-content {
+  border-color: #3b3f42;
+}
+body.theme_black #content .lobster_calendar .fc-state-highlight {
+  background: #000000;
+}
+body.theme_black #content .login_area form,
+body.theme_black #content .singup_area form {
+  background: #1e1f21;
+  border-color: #000000;
+}
+body.theme_black #content .dataTables_wrapper input {
+  background: #e7f1f5;
+}
+body.theme_black #content .dataTables_wrapper th {
+  color: #ffffff;
+  background-color: #3b3f42;
+}
+body.theme_black #content .dataTables_wrapper .group {
+  color: #000000;
+  background: #cccccc;
+  font-weight: bold;
+  border-bottom: 2px solid #9a9a9a;
+}
+body.theme_black #content .dataTables_wrapper table.dataTable {
+  color: #000000;
+  margin-bottom: 10px;
+}
+body.theme_black #content .dataTables_wrapper table.dataTable td,
+body.theme_black #content .dataTables_wrapper table.dataTable th {
+  padding: 10px;
+}
+body.theme_black #content .dataTables_wrapper table.dataTable tr.odd,
+body.theme_black #content .dataTables_wrapper table.dataTable tr.even {
+  background: #f1f1f1;
+  border-bottom: 1px solid #cccccc;
+}
+body.theme_black #content .dataTables_wrapper table.dataTable tr.even td.sorting_2 {
+  background: #dddddd;
+  border-right: 1px solid #dadcff;
+}
+body.theme_black #content .dataTables_wrapper table.dataTable tr.odd td.sorting_2 {
+  background: #d3c9c9;
+  border-right: 1px solid #dadcff;
+}
+body.theme_black #content .dataTables_wrapper table.dataTable tfoot th {
+  border-top: 1px solid #cccccc;
+}
+body.theme_black #content .dataTables_wrapper table.dataTable thead th {
+  border-bottom: 1px solid #cccccc;
+}
+body.theme_black #content .dataTables_wrapper .paging_full_numbers a.paginate_button:hover,
+body.theme_black #content .dataTables_wrapper .paging_full_numbers a.paginate_button,
+body.theme_black #content .dataTables_wrapper .paging_full_numbers .paging_full_numbers a.paginate_active {
+  color: #ffffff !important;
+  background-color: #3b3f42;
+  border: 1px solid #f1f1f1;
+  border: none;
+}
+body.theme_black #content .dataTables_wrapper .paging_full_numbers a.paginate_active {
+  background-color: #3b3f42;
+  color: #ffffff !important;
+}
+body.theme_black #footer {
+  background-color: #000000;
+}
+body.theme_black #footer .driver_space {
+  background: #1e1f21;
+}
+body.theme_black #footer .driver_space:before {
+  border-top: 20px solid #1e1f21;
+}
+body.theme_black #footer .link_socials a {
+  background: #1e1f21;
+}
+body.theme_black #footer .link_socials a:hover {
+  background: #141414;
+}
+body.theme_black #footer .subcrible {
+  background-color: #1e1f21;
+}
+body.theme_black #footer .footer_bottom {
+  background-color: #000000;
+}
+body.theme_black .square li a {
+  color: #ffffff;
+}
+body.theme_black .btn-inverse {
+  background-color: #000000;
+}
+body.theme_black .btn-inverse:hover {
+  background-color: #141414;
+}
+body.theme_black .btn-primary {
+  background-color: #3d4445;
+}
+body.theme_black .btn-primary:hover {
+  background-color: #c2a26f;
+}
+body.theme_black .flat-pagination a {
+  background: #3d4445;
+}
+/* **ENd BLACK THEME** ==============================================*/
+/* **Style Border Navigation MObile** ==============================================*/
+@media (max-width: 979px) {
+  body.theme_default #top_header {
+    border-bottom: 4px solid #CE4E4A;
+  }
+  body.theme_blue #top_header {
+    border-bottom: 4px solid #4BAAD3;
+  }
+  body.theme_green #top_header {
+    border-bottom: 4px solid #2ECC71;
+  }
+  body.theme_black #top_header {
+    border-bottom: 4px solid #3D4445;
+  }
+}
