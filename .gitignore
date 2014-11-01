@@ -30,7 +30,6 @@ tools/apache-activemq-5.8.0/*
 *.sass-cache*
 node_modules*
 dependencies/*.tar.gz
-assets/dist/main.*
 .grunt/*
 assets/.grunt/*
 assets/_SpecRunner.html
