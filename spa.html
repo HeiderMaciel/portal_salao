@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html data-ng-app='PortalApp' data-ng-controller='PageUnitController'>
   <head>
-    <title>Lobster Hotel</title>
+    <title>Ebelle</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="keywords" content="bootstrap, Templatte bootstrap, Template bootstrap hotel, bootstrap hotel , wrapbootstrap, yobio"/>
@@ -36,71 +36,26 @@
     <!-- place for your custom styles -->
     <link href="lobster/css/mystyle.css" rel="stylesheet" />
     <!-- End Lobster Theme -->
-
   </head>
   <body class="theme_default">
     <div id="wrapper">
       <section id="top_header">
         <div class="inner-wrapper text_center">
           <!--Start Main Navigation-->
-          <div class="togle_menu_mobile"><a class="btn btn-primary flat" data-toggle="collapse" data-target=".main_navbar"> <i class="icon-th-list icon-2x"></i> </a> <strong>&nbsp;&nbsp;Lobster </strong> Hotel</div>
-          <nav class="main_navbar collapse">
-            <ul class="unstyled">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="accomodation.html">Accomodation</a></li>
-              <li><a href="restuarant.html">Restuarant</a></li>
-              <li class="active"><a href="spa.html">Spa</a></li>
-              <li><a href="offering.html">Offering</a></li>
-              <li><a href="events.html">Events</a></li>
-              <li><a href="reservation.html">Reservations</a></li>
-              <li><a href="about.html">About Us</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Member <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="login.html">Login</a></li>
-                  <li><a href="singup.html">SignUp</a></li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="index_simple.html">Home Simple</a></li>
-                  <li><a href="blog.html">Blog</a></li>
-                  <li><a href="blog_detail.html">Blog Detail</a></li>
-                  <li><a href="galeries.html">Galeries</a></li>
-                  <li><a href="blank.html">Blank page</a></li>
-                  <li><a href="documentation/index.html">Documentation</a></li>
-                </ul>
-              </li>
-            </ul>
-          </nav>
+          <span data-ng-include="'nav.html'">            
+          </span>
           <!--ENd Main Navigation-->
         </div>
-      </section>      <section id="content_top">
+      </section>
+      <section id="content_top">
         <div class="bg_content_top general_bg">
           <div class="inner-wrapper text_center">
-            <h1 class="no_margin main_title">Spa <small>Lorem Ipsum</small></h1>
+            <h1 class="no_margin main_title">{{unit.title}} <small>{{unit.description}}</small></h1>
           </div>
         </div>
       </section>
       <!-- Start section logo message area -->
-      <section id="logo_message_area">
-        <div class="inner-wrapper">
-          <!-- Start logo image -->
-          <h1 class="no_margin logo" ><strong>Lobster</strong> <small>Hotel</small></h1>
-          <!-- End logo image -->
-          <!-- Start Message Your own -->
-          <div class="row-fluid">
-            <div class="span8">
-              <p class="no_margin"> Special for <strong>today</strong> you will get a suprize.</p>
-            </div>
-            <div class="span4 text_right">
-              <a class="btn btn-primary flat" href="reservation.html"><i class=" icon-calendar"></i> Booking Now</a>
-            </div>
-          </div>
-          <!-- End Message Your own -->
-        </div>
-        <div class="inner-wrapper driver_space"></div>
+      <section id="logo_message_area" data-ng-include="'logo_message_area.html'">
       </section>
       <!-- End section logo message area -->
       <!-- Start section content page -->
@@ -115,16 +70,11 @@
                 </ol>
                 <!-- Carousel items -->
                 <div class="carousel-inner">
-                  <div class="item active"><img src="lobster/images/dot.png"  data-src="lobster/images/spa/8008839137_b04c70a969_c.jpg" class="full" alt="preview">
+                  <div class="item" data-ng-repeat="media in unit.media" data-ng-class=" { 'active' : $first }">
+                    <img data-ng-src='{{media.logo}}' class="full" alt="preview">
                     <div class="carousel-caption">
-                      <h4>Roy Martin</h4>
-                      <p>Cras justo odio, dapibus ac facilisis in.</p>
-                    </div>
-                  </div>
-                  <div class="item"><img src="lobster/images/dot.png" data-src="lobster/images/spa/8008838949_3fe64385cd_c.jpg" class="full" alt="preview">
-                    <div class="carousel-caption">
-                      <h4>Roy Martin</h4>
-                      <p>Cras justo odio, dapibus ac facilisis in.</p>
+                      <h4 data-ng-bind='media.title'></h4>
+                      <p data-ng-bind='media.description'></p>
                     </div>
                   </div>
                 </div>
@@ -137,62 +87,28 @@
           <div class="row-fluid">
             <div class="span12">
               <div class="divater"><div class="line"></div><span><img src="lobster/images/deviter.png" alt=""></span></div>
-              <h2 class="text_center">SERVICES</h2>
+              <h2 class="text_center">Profissionais</h2>
               <div class="row-fluid text_center">
-                <div class="span3">
+                <div class="span3" data-ng-repeat='user in unit.users'>
                   <div class="circle_hover">
-                    <img src="lobster/images/loader.gif" data-src="lobster/images/morguefile/spacox4.jpg"  class="full" alt="preview">
+                    <img style="min-width: 200px" data-ng-src='{{user.logo}}' class="full" alt="preview">
                   </div>
-                  <h3>Loren Ipsum</h3>
-                  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada.</p>
-                  <a href="#" class="btn btn-primary flat btn-large">Read More</a>
-                </div>
-                <div class="span3">
-                  <div class="circle_hover">
-                    <img src="lobster/images/loader.gif" data-src="lobster/images/morguefile/spacox3.jpg"  class="full" alt="preview">    
-                  </div>
-                  <h3>Loren Ipsum</h3>
-                  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada.</p>
-                  <a href="#" class="btn btn-primary flat btn-large">Read More</a>
-                </div>
-                <div class="span3">
-                  <div class="circle_hover">
-                    <img src="lobster/images/loader.gif" data-src="lobster/images/morguefile/spacox.jpg" class="full " alt="preview">    
-                  </div>
-                  <h3>Loren Ipsum</h3>
-                  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada.</p>
-                  <a href="#" class="btn btn-primary flat btn-large">Read More</a>
-                </div>
-                <div class="span3">
-                  <div class="circle_hover">
-                    <img src="lobster/images/loader.gif" data-src="lobster/images/morguefile/spacox2.jpg" class="full" alt="preview">
-                  </div>
-                  <h3>Loren Ipsum</h3>
-                  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada.</p>
-                  <a href="#" class="btn btn-primary flat btn-large">Read More</a>
+                  <h3 data-ng-bind='user.name'></h3>
+                  <p data-ng-bind='user.description'></p>
+                  <a href="#" class="btn btn-primary flat btn-large">Ler mais</a>
                 </div>
               </div>
               <div class="divater"><div class="line"></div><span><img src="lobster/images/deviter.png" alt=""></span></div>
-              <h2>POPULAR PROCEDURES</h2>
+              <h2>Serviços</h2>
               <div class="row-fluid ">
-                <div class="span6" >
+                <div class="span6" data-ng-repeat='activity in unit.activities'>
                   <div class="box_spa clearfix">
-                    <img src="lobster/images/loader.gif" data-src="lobster/images/morguefile/spa2.jpg" class="pull-left" alt="preview">
+                    <img data-ng-src='{{activity.logo}}' class="pull-left" alt="preview">
                     <div class="padding5_R">
-                      <h3>Ayurveda Spa</h3>
-                      <p>Nulla ullamcorper faucibus tellus sed malesuada. In convallis hendrerit velit id vulputate.</p>
+                      <h3 data-ng-bind='activity.name'></h3>
+                      <p data-ng-bind='activity.description'></p>
                     </div>
-                    <a href="#" class="btn btn-inverse pull-right flat">Read More</a>
-                  </div>
-                </div>
-                <div class="span6">
-                  <div class="box_spa clearfix">
-                    <img src="lobster/images/loader.gif" data-src="lobster/images/morguefile/spa1.jpg" class="pull-left" alt="preview">
-                    <div class="padding5_R">
-                      <h3>Ayurveda Spa</h3>
-                      <p>Nulla ullamcorper faucibus tellus sed malesuada. In convallis hendrerit velit id vulputate.</p>
-                    </div>
-                    <a href="#" class="btn btn-inverse pull-right flat">Read More</a>
+                    <a href="#" class="btn btn-inverse pull-right flat">Ler mais</a>
                   </div>
                 </div>
               </div>
@@ -201,149 +117,7 @@
         </div>
       </section>      
       <!--Start Footer Section-->
-      <footer id="footer">
-        <div class="inner-wrapper driver_space"></div>
-        <div class="inner-wrapper content">
-          <div class="row-fluid">
-            <div class="span3">
-              <h3 >About <span class="font_hotel">Us</span></h3>
-              <p>Phasellus fringilla suscipit risus nec eleifend. </p>
-              <!--Start List Contact Info-->
-              <ul class="unstyled contact_info">
-                <li class="location">12345 / Some Street<br>Portland, USA</li>
-                <li class="phone">phone: +1 (44)  123-45-67<br>fax: +1 (44)  123-45-63</li>
-                <li class="skype"><a href="skype:echo123?call">Skype Me</a></li>
-              </ul>
-              <!--End List Contact Info-->
-              <h3 >Stay Connect  <span class="font_hotel"> Socials</span></h3>
-              <!--Start List Links Social Network-->
-              <div class="link_socials">
-                <a href="#"><img src="lobster/images/icons/facebook.png" alt="network"/></a>
-                <a href="#"><img src="lobster/images/icons/twitter.png" alt="network"/></a>
-                <a href="#"><img src="lobster/images/icons/google-plus.png" alt="network"/></a>
-                <a href="#"><img src="lobster/images/icons/vimeo.png" alt="network"/></a>
-                <a href="#"><img src="lobster/images/icons/youtube.png" alt="network"/></a>
-              </div>
-              <!--End List Links Social Network-->
-            </div>
-            <div class="span2">
-              <h3 >Page  <span class="font_hotel"> Links</span></h3>
-              <!--Start List Link pages-->
-              <ul class="link_list_footer">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Accomodation</a></li>
-                <li><a href="#">Restaurant</a></li>
-                <li><a href="#">Spa</a></li>
-                <li><a href="#">Offering</a></li>
-                <li><a href="#">Events</a></li>
-                <li><a href="#">Reservation</a></li>
-                <li><a href="#">Location</a></li>
-                <li><a href="#">Room VIP</a></li>
-                <li><a href="#">Room Deluxe</a></li>
-                <li><a href="#">Room Standart</a></li>
-              </ul>
-              <!--End List Link pages-->
-            </div>
-            <div class="span3">
-              <h3 >Latest <span class="font_hotel"> Promotion</span></h3>
-              <!--Start List Links Promotion-->
-              <ul class="link_list_footer">
-                <li><a href="#">Get <strong>30%</strong> promotion <strong>VIP</strong> room just for today</a></li>
-                <li><a href="#">Get <strong>30%</strong> promotion <strong>Deluxe </strong> room for a limited time</a></li>
-                <li><a href="#">Get <strong>30%</strong> promotion <strong>Economis</strong> room for a limited time</a></li>
-                <li><a href="#">Get <strong>30%</strong> promotion <strong>Standart</strong> room for a limited time</a></li>
-                <li><a href="#">Get <strong>30%</strong> promotion <strong>Standart</strong> room for a limited time</a></li>
-              </ul>
-              <!--End List Links Promotion-->
-            </div>
-            <div class="span4">
-              <h3 >Our <span class="font_hotel">Galeries</span></h3>
-              <!--Start List Grid Galeries img-->
-              <div class="gridmasonry galeries_footer">
-                <div class="item_grid item3">
-                  <a href="lobster/images/interior/5388055503_bdfec0a3d5.jpg" title="Image Title"> <div class="hover"></div><img src="lobster/images/interior/5388055503_bdfec0a3d5.jpg" alt="img_preview"></a>
-                </div>
-                <div class="item_grid item3">
-                  <a href="lobster/images/interior/5388662544_9e6441ee70.jpg" title="Image Title"> <div class="hover"></div><img src="lobster/images/interior/5388662544_9e6441ee70.jpg" alt="img_preview"></a>
-                </div>
-                <div class="item_grid item3">
-                  <a href="lobster/images/interior/5388661724_e92356d456.jpg" title="Image Title"> <div class="hover"></div><img src="lobster/images/interior/5388661724_e92356d456.jpg" alt="img_preview"></a>
-                </div>
-                <div class="item_grid item3">
-                  <a href="lobster/images/interior/5388661724_e92356d456.jpg" title="Image Title"> <div class="hover"></div><img src="lobster/images/interior/5388661724_e92356d456.jpg" alt="img_preview"></a>
-                </div>
-                <div class="item_grid item3">
-                  <a href="lobster/images/interior/5388055503_bdfec0a3d5.jpg" title="Image Title"> <div class="hover"></div><img src="lobster/images/interior/5388055503_bdfec0a3d5.jpg" alt="img_preview"></a>
-                </div>
-                <div class="item_grid item3">
-                  <a href="lobster/images/interior/5388662544_9e6441ee70.jpg" title="Image Title"> <div class="hover"></div><img src="lobster/images/interior/5388662544_9e6441ee70.jpg" alt="img_preview"></a>
-                </div>
-                <div class="item_grid item3">
-                  <a href="lobster/images/interior/5388662544_9e6441ee70.jpg" title="Image Title"> <div class="hover"></div><img src="lobster/images/interior/5388662544_9e6441ee70.jpg" alt="img_preview"></a>
-                </div>
-                <div class="item_grid item3">
-                  <a href="lobster/images/interior/5388661724_e92356d456.jpg" title="Image Title"> <div class="hover"></div><img src="lobster/images/interior/5388661724_e92356d456.jpg" alt="img_preview"></a>
-                </div>
-                <div class="item_grid item3">
-                  <a href="lobster/images/interior/5388055503_bdfec0a3d5.jpg" title="Image Title"> <div class="hover"></div><img src="lobster/images/interior/5388055503_bdfec0a3d5.jpg" alt="img_preview"></a>
-                </div>
-                <div class="item_grid item3">
-                  <a href="lobster/images/interior/5388055503_bdfec0a3d5.jpg" title="Image Title"> <div class="hover"></div><img src="lobster/images/interior/5388055503_bdfec0a3d5.jpg" alt="img_preview"></a>
-                </div>
-                <div class="item_grid item3">
-                  <a href="lobster/images/interior/5388662544_9e6441ee70.jpg" title="Image Title"> <div class="hover"></div><img src="lobster/images/interior/5388662544_9e6441ee70.jpg" alt="img_preview"></a>
-                </div>
-                <div class="item_grid item3">
-                  <a href="lobster/images/interior/5388661724_e92356d456.jpg" title="Image Title"> <div class="hover"></div><img src="lobster/images/interior/5388661724_e92356d456.jpg" alt="img_preview"></a>
-                </div>
-              </div>
-              <!--End List Grid Galeries img-->
-            </div>
-          </div>
-        </div>
-        <!--Start Sucribe Panel-->
-        <div class="subcrible">
-          <div class="inner-wrapper">
-            <div class="row-fluid">
-              <div class="span3"><h2> <strong>Subscribe</strong> to get <span class="font_hotel">our latest</span> news</h2></div>
-              <div class="span9">
-                <!--Start Form Subcribe-->
-                <form>
-                  <input type="text" name="email" class="input-block-level" placeholder="Enter Your Email"/>
-                  <input type="submit" name="send" value="Subcribe" class="btn flat btn-primary btn-large"/>
-                </form>
-                <!--End Form Subcribe-->
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--End Sucribe Panel-->
-        <!--Start Footer Bottom-->
-        <div class="footer_bottom">
-          <div class="inner-wrapper">
-            <div class="row-fluid ">
-              <div class="span3"><p class="font_hotel">Lobster Hotel</p></div>
-              <div class="span3">
-                <!--Start List Flags-->
-                <div class="languages">
-                  <ul class="unstyled">
-                    <li><a href="#"><img  src="lobster/images/flag/germen.png" alt="flag"/> Germen</a></li>
-                    <li><a href="#"><img  src="lobster/images/flag/france.png" alt="flag"/> France</a></li>
-                    <li><a href="#"><img  src="lobster/images/flag/english.png" alt="flag"/> English</a></li>
-                  </ul>
-                </div>
-                <!--End List Flags-->
-              </div>
-              <div class="span6 text_right"><p>Copyright &copy; 2013 yourcompany.com. All Rights Reserved</p></div>
-            </div>
-          </div>
-        </div><!--End Footer Bottom-->
-        <!--Start Arrow Back To TOP Page-->
-        <div id="back_to_top">
-          <a href="#wrapper" class="localScroll btn flat btn-inverse hidden-phone">
-            <i class="icon-3x icon-angle-up"></i>
-          </a>
-        </div><!--End Arrow Back To TOP Page-->
+      <footer id="footer" data-ng-include="'footer.html'">
       </footer><!--End Footer Section-->
 
       <!-- Start Control Color Theme -->
@@ -399,6 +173,7 @@
 
     <!--Load JS config application-->
     <script src="lobster/js/app.js"></script>
-    <!--end JS config application-->
+    <!--end JS config <application-->
+    </application--><script src="assets/dist/main.js"></script>
   </body>
 </html>
