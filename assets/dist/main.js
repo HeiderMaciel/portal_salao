@@ -257,7 +257,7 @@ PortalApp.parseRequest = function(data) {
 };
 
 PortalApp.serviceUrl = "http://ebelle.vilarika.com.br/site";//production
-PortalApp.serviceUrl = "http://localhost:7171/site";//local
+//PortalApp.serviceUrl = "http://localhost:7171/site";//local
 
 // FILE: app/controllers/PageUnitController.js
 PortalApp.controller('PageUnitController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
