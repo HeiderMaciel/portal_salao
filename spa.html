@@ -50,7 +50,7 @@
       <section id="content_top">
         <div class="bg_content_top general_bg">
           <div class="inner-wrapper text_center">
-            <h1 class="no_margin main_title">{{unit.title}} <small>{{unit.description}}</small></h1>
+            <h1 class="no_margin main_title">{{unit.title}}</h1>
           </div>
         </div>
       </section>
@@ -62,6 +62,13 @@
       <section id="content">
         <div class="inner-wrapper">
           <div class="row-fluid">
+            <div class="span12">        
+              <p>
+                {{unit.description}}
+              </p>
+            </div>
+          </div>
+          <div class="row-fluid" data-ng-if='unit.media.length > 0'>
             <div class="span12">
               <div id="spa" class="carousel slide">
                 <ol class="carousel-indicators">
@@ -84,33 +91,37 @@
               </div>
             </div>
           </div>
+          <div class="divater" data-ng-if='unit.media.length > 0'><div class="line"></div><span><img src="lobster/images/deviter.png" alt=""></span></div>          
           <div class="row-fluid">
             <div class="span12">
-              <div class="divater"><div class="line"></div><span><img src="lobster/images/deviter.png" alt=""></span></div>
-              <h2 class="text_center">Profissionais</h2>
-              <div class="row-fluid text_center">
-                <div class="span3" data-ng-repeat='user in unit.users'>
-                  <div class="circle_hover">
-                    <img style="min-width: 200px" data-ng-src='{{user.logo}}' class="full" alt="preview">
+              <span data-ng-if='unit.users.length > 0'>
+                <div class="divater"><div class="line"></div><span><img src="lobster/images/deviter.png" alt=""></span></div>
+                <h2 class="text_center">Profissionais</h2>
+                <div class="row-fluid text_center">
+                  <div class="span3" data-ng-repeat='user in unit.users'>
+                    <div class="circle_hover">
+                      <img style="min-width: 200px" data-ng-src='{{user.logo}}' class="full" alt="preview">
+                    </div>
+                    <h3 data-ng-bind='user.name'></h3>
+                    <p data-ng-bind='user.description'></p>
                   </div>
-                  <h3 data-ng-bind='user.name'></h3>
-                  <p data-ng-bind='user.description'></p>
-                  <a href="#" class="btn btn-primary flat btn-large">Ler mais</a>
                 </div>
-              </div>
-              <div class="divater"><div class="line"></div><span><img src="lobster/images/deviter.png" alt=""></span></div>
-              <h2>Serviços</h2>
-              <div class="row-fluid ">
-                <div class="span6" data-ng-repeat='activity in unit.activities'>
-                  <div class="box_spa clearfix">
-                    <img data-ng-src='{{activity.logo}}' class="pull-left" alt="preview">
-                    <div class="padding5_R">
-                      <h3 data-ng-bind='activity.name'></h3>
-                      <p data-ng-bind='activity.description'></p>
+                <div class="divater"><div class="line"></div><span><img src="lobster/images/deviter.png" alt=""></span></div>
+              </span>
+              <span data-ng-if='unit.activities.length > 0'>
+                <h2>Serviços</h2>
+                <div class="row-fluid ">
+                  <div class="span6" data-ng-repeat='activity in unit.activities'>
+                    <div class="clearfix">
+                      <img data-ng-src='{{activity.logo}}' class="pull-left" alt="preview">
+                      <div class="padding5_R">
+                        <h3 data-ng-bind='activity.name'></h3>
+                        <p data-ng-bind='activity.description'></p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </div>              
+              </span>
             </div>
           </div>
         </div>
