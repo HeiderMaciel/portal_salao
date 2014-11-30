@@ -288,6 +288,6 @@ PortalApp.controller('UnitController', ['$scope', '$http', function ($scope, $ht
 	};
 
 	$http.get(PortalApp.serviceUrl+"/unities").then(function(repose){
-		$scope.rows = buildRows(PortalApp.parseRequest(repose.data), 3);
+		$scope.rows = buildRows(PortalApp.parseRequest(repose.data), 4);
 	});
 }]);

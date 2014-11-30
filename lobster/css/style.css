@@ -617,7 +617,7 @@ Start Content Section
 }
 #content .boxfeature .img_preview {
   width: 100%;
-  min-height: 200px;
+  height: 200px;
   overflow: hidden;
   position: relative;
 }
@@ -636,6 +636,7 @@ Start Content Section
   display: inline-block;
   color: white;
   padding: 5px;
+  width: 100%;
   transition: all 0.3s ease 0s;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;

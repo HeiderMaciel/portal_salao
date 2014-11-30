@@ -96,17 +96,21 @@
        <!-- Start Grid Top Featires-->
           <span data-ng-controller='UnitController' class="row-fluid">
             <div  data-ng-repeat='unities in rows'>
-              <div class="span4 text_center" data-ng-repeat='unit in unities'>
-                <div class="boxfeature">
-                  <div class="img_preview">
-                    <img data-ng-src="{{unit.logo}}" alt="img_preview"/>
-                    <h4 data-ng-bind='unit.title'></h4>
+              <div class="span3 text_center" data-ng-repeat='unit in unities'>
+                <a href="./spa.html#/{{unit.siteName}}">
+                  <div class="boxfeature">
+                    <div class="img_preview">
+                      <img data-ng-src="{{unit.logo}}" alt="img_preview"/>
+                      <h4 data-ng-bind='unit.title'></h4>
+                    </div>
+                    <!--
+                    <div class="desc" >
+                      <p data-ng-bind='unit.description'></p>
+                      <p><a class="btn btn-primary flat btn-large" href="./spa.html#/{{unit.siteName}}">Ler mais</a></p>
+                    </div>
+                    -->
                   </div>
-                  <div class="desc" >
-                    <p data-ng-bind='unit.description'></p>
-                    <p><a class="btn btn-primary flat btn-large" href="./spa.html#/{{unit.siteName}}">Ler mais</a></p>
-                  </div>
-                </div>
+                </a>
                 <br/>
               </div>
             </div> 
