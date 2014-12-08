@@ -27,7 +27,7 @@ PortalApp.controller('UnitController', ['$scope', '$http', function ($scope, $ht
 	};
 
 	$http.get(PortalApp.serviceUrl+"/unities").then(function(repose){
-		$scope.pages = buildRows(PortalApp.parseRequest(repose.data), 4, 1);
+		$scope.pages = buildRows(PortalApp.parseRequest(repose.data), 4, 3);
 		$scope.page = $scope.pages[0];
 	});
 	$scope.chagePage = function(page){
