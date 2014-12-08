@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
     var srcPath         = ['app/*.js','app/controllers/*.js'];
-    var libPaths        = ['app/bower_components/angular/angular.min.js'];
+    var libPaths        = ['app/bower_components/angular/angular.min.js', 'app/bower_components/angular-sanitize/angular-sanitize.min.js'];
     var specsPath       = 'specs/**/*spec*.js';
     var helperPath      = 'specs/helpers/*.js';
 

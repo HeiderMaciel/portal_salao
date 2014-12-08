@@ -63,8 +63,7 @@
         <div class="inner-wrapper">
           <div class="row-fluid">
             <div class="span12">        
-              <p>
-                {{unit.description}}
+              <p data-ng-bind-html='unit.description'>
               </p>
             </div>
           </div>
@@ -81,7 +80,7 @@
                     <img data-ng-src='{{media.logo}}' class="full" alt="preview">
                     <div class="carousel-caption">
                       <h4 data-ng-bind='media.title'></h4>
-                      <p data-ng-bind='media.description'></p>
+                      <p data-ng-bind-html='media.description'></p>
                     </div>
                   </div>
                 </div>
