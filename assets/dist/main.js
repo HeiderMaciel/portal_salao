@@ -326,7 +326,7 @@ PortalApp.controller('UnitController', ['$scope', '$http', function ($scope, $ht
 		$scope.page = page;
 	};
 	$scope.nextPage = function(){
-		var currentIndex = $scope.pages.indexOf($scope.page)-1;
+		var currentIndex = $scope.pages.indexOf($scope.page);
 		currentIndex++;
 		if(currentIndex === $scope.pages.length){
 			currentIndex = 0;			
@@ -334,7 +334,7 @@ PortalApp.controller('UnitController', ['$scope', '$http', function ($scope, $ht
 		$scope.page = $scope.pages[currentIndex];
 	};	
 	$scope.prevPage = function(){
-		var currentIndex = $scope.pages.indexOf($scope.page)-1;
+		var currentIndex = $scope.pages.indexOf($scope.page);
 		currentIndex--;
 		if(currentIndex === -1){
 			currentIndex = $scope.pages.length;

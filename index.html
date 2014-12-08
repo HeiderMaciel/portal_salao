@@ -115,15 +115,17 @@
               </div>
             </div>
             <!--Start Pagination -->
-              <div class="pagination flat-pagination  pagination-large text_center">
-                <ul>
-                  <li><a href="#" data-ng-click='prevPage()'>Ant</a></li>
-                  <li data-ng-repeat='currentPage in pages'  data-ng-class="{ active : currentPage === page }">
-                    <a href="#" data-ng-click='chagePage(currentPage)' data-ng-bind='$index+1'></a>
-                  </li>
-                  <li><a href="#" data-ng-click='nextPage()'>Prox</a></li>
-                </ul>
-              </div><!--End Pagination -->
+              <span class='span12'>
+                <div class="pagination flat-pagination  pagination-large text_center">
+                  <ul>
+                    <li><a href="#" data-ng-click='prevPage()'>Ant</a></li>
+                    <li data-ng-repeat='currentPage in pages'  data-ng-class="{ active : currentPage === page }">
+                      <a href="#" data-ng-click='chagePage(currentPage)' data-ng-bind='$index+1'></a>
+                    </li>
+                    <li><a href="#" data-ng-click='nextPage()'>Prox</a></li>
+                  </ul>
+                </div>
+              </span><!--End Pagination -->
           </span>  
               <!-- End Grid Top Featires-->
           <div class="row-fluid">
