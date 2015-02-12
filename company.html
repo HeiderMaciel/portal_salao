@@ -121,7 +121,7 @@
                       <img style="min-width: 200px" data-ng-src='{{user.logo}}' class="full" alt="preview">
                     </div>
                     <h3 data-ng-bind='user.name'></h3>
-                    <p data-ng-bind='user.description'></p>
+                    <p data-ng-bind-html='user.description'></p>
                   </div>
                 </div>
                 <div class="divater"><div class="line"></div><span><img src="lobster/images/deviter.png" alt=""></span></div>
@@ -134,7 +134,7 @@
                       <img data-ng-src='{{activity.logo}}' class="pull-left" alt="preview">
                       <div class="padding5_R">
                         <h3 data-ng-bind='activity.name'></h3>
-                        <p data-ng-bind='activity.description'></p>
+                        <p data-ng-bind-html='activity.description'></p>
                       </div>
                     </div>
                   </div>
@@ -146,7 +146,8 @@
       </section>      
       <!--Start Footer Section-->
       <footer id="footer" data-ng-include="'footer.html'">
-      </footer><!--End Footer Section-->
+      </footer>
+      <!--End Footer Section-->
 
       <!-- Start Control Color Theme -->
       <div class="control_color hidden-phone">
