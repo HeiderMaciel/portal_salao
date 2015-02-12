@@ -147,27 +147,11 @@
               <div class="row-fluid">
                 <div class="span6">
                   <!-- Start Testimonaila list-->
-                  <h3 >What Our Custumers Say</h3>
-                  <ul class="unstyled custumer_say">
-                    <li class="clearfix">
-                      <img class="pull-left img_client" src="lobster/images/custumers/c1.jpg" alt="image" >
-                      <h4 class="media-heading">Ray O’Sun</h4>
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </li>
-                    <li class="clearfix">
-                      <img class="pull-left img_client" src="lobster/images/custumers/c2.jpg" alt="image">
-                      <h4 class="media-heading">Joe Morton </h4>
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </li>
-                    <li class="clearfix">
-                      <img class="pull-left img_client" src="lobster/images/custumers/c3.jpg" alt="image">
-                      <h4 class="media-heading">Jenny Flex</h4>
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </li>
-                    <li class="clearfix">
-                      <img class="pull-left img_client" src="lobster/images/custumers/c4.jpg" alt="image">
-                      <h4 class="media-heading">Lupe Lamora</h4>
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                  <h3 >Vagas</h3>
+                  <ul class="unstyled custumer_say" data-ng-controller='JobRequestController'>
+                    <li class="clearfix" data-ng-repeat="job in page.rows[0]">
+                      <h4 class="media-heading" data-ng-bind='job.name'>Ray O’Sun</h4>
+                      <p  data-ng-bind-html='job.description'></p>
                     </li>
                   </ul><!-- End Testimonaila list-->
                 </div>
