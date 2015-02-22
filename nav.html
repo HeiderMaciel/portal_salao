@@ -7,9 +7,10 @@
   ga('send', 'pageview');
 </script>
 <div class="togle_menu_mobile"><a class="btn btn-primary flat" data-toggle="collapse" data-target=".main_navbar"> <i class="icon-th-list icon-2x"></i> </a> <strong>&nbsp;&nbsp;Ebelle </strong></div>
-<nav class="main_navbar collapse">
+<nav class="main_navbar collapse" data-ng-controller='MainController'>
   <ul class="unstyled">
     <li class="active"><a href="index.html">Home</a></li>
+    <li data-ng-repeat='city in cities'><a href="/index.html#/{{city.url_name}}" data-ng-bind='city.name'></a></li>
     <!--
       <li><a href="accomodation.html">Accomodation</a></li>
       <li><a href="restuarant.html">Restuarant</a></li>

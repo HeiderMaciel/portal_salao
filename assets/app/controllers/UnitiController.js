@@ -1,4 +1,8 @@
-PortalApp.controller('UnitController', ['$scope', '$http', function ($scope, $http) {
+PortalApp.controller('UnitController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+
+	$scope.$on('$locationChangeSuccess', function(){
+		updateUnities();
+	});
 
 	var buildRows = function(data, nIntens, nRowToPage){
 		var pages = [];
@@ -25,11 +29,14 @@ PortalApp.controller('UnitController', ['$scope', '$http', function ($scope, $ht
 		}
 		return pages;
 	};
-
-	$http.get(PortalApp.serviceUrl+"/unities").then(function(repose){
-		$scope.pages = buildRows(PortalApp.parseRequest(repose.data), 4, 3);
-		$scope.page = $scope.pages[0];
-	});
+	var updateUnities = function(){
+		var cityName = $location.$$path.replace('/','');
+		$http.get(PortalApp.serviceUrl+"/unities?cityName="+cityName).then(function(repose){
+			$scope.pages = buildRows(PortalApp.parseRequest(repose.data), 4, 3);
+			$scope.page = $scope.pages[0];
+		});		
+	};
+	updateUnities();
 	$scope.chagePage = function(page){
 		$scope.page = page;
 	};
