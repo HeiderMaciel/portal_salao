@@ -1,0 +1,52 @@
+<section id="content" data-ng-controller='SchedulerController'>
+  <div class="inner-wrapper">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="singup_area with_bg">
+          <form class="lobstrer_form_validation">
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="panel">
+                  <p class="text_center" >
+                    <img src="http://ebelle.vilarika.com.br/images/logo.png"   alt="preview" width="100">
+                    <a href="#" class="btn flat btn-warning Mtop-1">[ <span data-ng-bind='customer.short_name'></span> ] </a>
+                  </p>
+                  <div class="divater"><div class="line"></div><span><img src="lobster/images/deviter.png" alt=""></span></div>
+                    <a class="btn btn-primary flat" data-ng-click='openSchelules()'>
+                      <i class=" icon-calendar"></i> Ver agendamentos
+                    </a>                  
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="span6">
+                <div class="panel">
+                    <label>Selecione um Proficional</label>
+                    <select class="input-block-level" required data-ng-change="selectServices()" data-ng-model='user' data-ng-options="p.name for p in users">
+                    </select>
+                    <label>Selecione uma data</label>
+                    <select class="input-block-level" required data-ng-model='date' data-ng-options="a.name for a in activityData.dates">
+                    </select>                    
+                </div>
+              </div>
+              <div class="span6">
+                <div class="panel">
+                  <label>Selecione um Serviço</label>
+                  <select class="input-block-level" required data-ng-model='activity' data-ng-options="a.name for a in activityData.activities">
+                  </select>
+                    <label>Selecione um Horario</label>
+                    <select class="input-block-level" required data-ng-model='hour' data-ng-options="a.name for a in activityData.hours">
+                    </select>                  
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+                <button type="button" data-ng-click='schedule(user, date, hour, activity)' class="btn btn-info btn-large input-block-level flat">Agendar</button>
+            </div>
+            </form><!-- End Form-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

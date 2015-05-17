@@ -36,59 +36,14 @@
     <!-- place for your custom styles -->
     <link href="lobster/css/mystyle.css" rel="stylesheet" />
     <!-- End Lobster Theme -->
-    
+    <script src="assets/dist/main.js"></script>
   </head>
-  <body class="theme_default">  
+  <body class="theme_default" data-ng-app='PortalApp' data-ng-controller='LoginController'>
       <!--Start main Title content-->
       <!--End main Title content-->
-<!-- Start section content page -->
-  <section id="content">
-    <div class="inner-wrapper">
-      <div class="row-fluid">
-        <div class="span12">
-          <div class="singup_area with_bg">
-            <form class="lobstrer_form_validation">
-              <div class="row-fluid">
-                <div class="span12">
-                  <div class="panel">
-                    <p class="text_center" >
-                      <img src="lobster/images/loader.gif" data-src="lobster/images/Graphic1.png"  alt="preview" width="100">
-                      <a href="#" class="btn flat btn-warning Mtop-1">[ <span data-ng-bind='customer.shortName'></span> ] </a>
-                    </p>
-                    <div class="divater"><div class="line"></div><span><img src="lobster/images/deviter.png" alt=""></span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="row-fluid">
-                <div class="span6">
-                  <div class="panel">
-                      <label>Selecione um Proficional</label>
-                      <select class="input-block-level" required data-ng-model='treatment.user' data-ng-option="">
-                      </select>
-                      <label>Selecione um Horario</label>
-                      <select class="input-block-level" required data-ng-model='treatment.start' data-ng-option="">
-                      </select>
-                  </div>
-                </div>
-                <div class="span6">
-                  <div class="panel">
-                    <label>Selecione um Serviço</label>
-                    <select class="input-block-level" required data-ng-model='treatment.user' data-ng-option="">
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="row-fluid">
-                  <button type="button" class="btn btn-info btn-large input-block-level flat">Agendar</button>
-              </div>
-              </form><!-- End Form-->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section><!-- End section logo message area -->'
-      
+      <!-- Start section content page -->
+      <span data-ng-include="pageUrl">
+      </span>
       <!--Start Footer Section-->
       <!--End Footer Section-->
       
@@ -142,5 +97,7 @@
     <script src="assets/dist/main.js"></script>
     <script src="lobster/js/app.js"></script>
     <!--end JS config application-->
+    <script src="http://ebelle.vilarika.com.br/js/default/date.js"></script>
+    <script src="http://ebelle.vilarika.com.br/js/default/global.js"></script>
   </body>
 </html>

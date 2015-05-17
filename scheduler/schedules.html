@@ -1,0 +1,43 @@
+<section id="content" data-ng-controller='SchedulesController'>
+    <div class="inner-wrapper">
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="singup_area with_bg">
+            <form class="lobstrer_form_validation">
+              <div class="row-fluid">
+                <div class="span12">
+                  <div class="panel">
+                    <p class="text_center" >
+                      <img src="http://ebelle.vilarika.com.br/images/logo.png"   alt="preview" width="100">
+                      <a href="#" class="btn flat btn-warning Mtop-1">[ <span data-ng-bind='customer.short_name'></span> ] </a>
+                    </p>
+                    <div class="divater"><div class="line"></div><span><img src="lobster/images/deviter.png" alt=""></span></div>
+                    <a class="btn btn-primary flat" data-ng-click='openSchelule()'>
+                    <i class=" icon-calendar"></i> Agente um horario
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <table class='table table-striped'>
+                <thead>
+                  <tr>
+                    <th>Atendimento</th>
+                    <th>Data</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-ng-repeat="item in history">
+                    <td data-ng-bind-html='item.title'></td>
+                    <td data-ng-bind='item.start_date+"  "+item.start_hour'></td>
+                    <td data-ng-bind='item.status'></td>
+                  </tr>
+                </tbody>
+              </table>
+              </form><!-- End Form-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

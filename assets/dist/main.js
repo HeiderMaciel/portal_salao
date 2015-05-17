@@ -277,6 +277,12 @@ PortalApp.parseRequest = function(data) {
 	data = data.substring(0, data.length - 1);
 	return JSON.parse(data);
 };
+PortalApp.setLovalVar = function(name, data) {
+	localStorage.setItem(name,JSON.stringify(data));
+};
+PortalApp.getLovalVar = function(name) {
+	return JSON.parse(localStorage.getItem(name));
+};
 
 PortalApp.serviceUrl = "http://ebelle.vilarika.com.br/site";//production
 //PortalApp.serviceUrl = "http://localhost:7171/site";//local
@@ -335,6 +341,32 @@ PortalApp.controller('JobRequestController', ['$scope', '$http', function ($scop
 	};		
 }]);
 
+// FILE: app/controllers/Login.js
+PortalApp.controller('LoginController', ['$scope', '$http', function ($scope, $http) {
+	$scope.cutomer = PortalApp.getLovalVar("customer");
+	if($scope.cutomer){
+		$scope.pageUrl = "./scheduler/schedules.html";
+	}else{
+		$scope.pageUrl = "./scheduler/login.html";
+	}
+	$scope.openSchelule = function(){
+		$scope.pageUrl = "./scheduler/scheduler.html";
+	};
+	$scope.openSchelules = function(){
+		$scope.pageUrl = "./scheduler/schedules.html";
+	};	
+	$scope.login = function(user, password){
+		$http.post(PortalApp.serviceUrl+"/../mobile/api/login?email="+user+"&password="+password).then(function(rep){
+			var customer = PortalApp.parseRequest(rep.data);
+			customer.password = password;
+			PortalApp.setLovalVar("customer",customer);
+			$scope.pageUrl = "./scheduler/schedules.html";
+		}, function(){
+			alert("E-mail ou senha invalidos!");
+		});
+	};
+}]);
+
 // FILE: app/controllers/Main.js
 PortalApp.controller('MainController', ['$scope', '$http', function ($scope, $http) {
 
@@ -352,6 +384,82 @@ PortalApp.controller('PageUnitController', ['$scope', '$http', '$location', func
 			initializeMap();
 		}, 500);
 	});
+}]);
+
+// FILE: app/controllers/Scheduler.js
+PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope, $http) {
+	$scope.customer = PortalApp.getLovalVar("customer");
+	var start = encodeURIComponent(new Date().getDateBr());
+	var end = encodeURIComponent(new Date().getNextMonth().getDateBr());
+	$http.post(PortalApp.serviceUrl+"/../mobile/api/users?email="+$scope.customer.email+"&password="+$scope.customer.password).then(function(rep){
+		$scope.users = PortalApp.parseRequest(rep.data);
+	});
+	$scope.selectServices = function(){
+
+		$http.post(PortalApp.serviceUrl+"/../mobile/api/activities?email="+$scope.customer.email+"&password="+$scope.customer.password+"&user="+$scope.user.id).then(function(rep){
+			$scope.activityData = PortalApp.parseRequest(rep.data);
+			$scope.activityData.hours = getHours($scope.activityData.start, $scope.activityData.end, $scope.activityData.interval);
+			$scope.activityData.dates = getDates();
+		});
+	};
+	$scope.schedule = function(user, date, hour, activity){
+		var params = "?email="+$scope.customer.email+
+					 "&password="+$scope.customer.password+
+					 "&user="+user.id+
+					 "&customer="+$scope.customer.id+
+					 "&date="+encodeURIComponent(date.value)+
+					 "&hour_start="+encodeURIComponent(hour.name)+
+					 "&activity="+encodeURIComponent(activity.id);
+		$http.post(PortalApp.serviceUrl+"/../mobile/api/schedule"+params).then(function(rep){
+			alert("Agendamento efetudo com sucesso!");
+			$scope.openSchelules();
+		});
+
+	};
+
+}]);
+var getDates = function(){
+	var ONE_DAY = 86400 * 1000;
+	var today = new Date();
+	var nextMonth = new Date().getNextMonth();
+	var dates = [];
+	while(today.getTime() < nextMonth.getTime()){
+		today.setTime(today.getTime()+ONE_DAY);
+		dates.push({name : today.getTextWhen(), value: today.getDateBr()});
+	}
+	return dates;
+};
+var getHours = function(start, end, interval){
+	var MINUTE_IN_MILES = 60*1000;
+	var date = new Date();
+	var dayToday = Date.toDay().getDate();
+	date.setHours(start);
+	date.setMinutes(0);
+	var increment = interval * MINUTE_IN_MILES;
+	var hours = [];
+	while(date.getHours() <= end && date.getDate() === dayToday ){
+		hours.push({name : getHourBr(date), value: date});
+		date.setTime(date.getTime()+increment);
+	}
+	return hours; 
+};
+
+// FILE: app/controllers/Schedules.js
+PortalApp.controller('SchedulesController', ['$scope', '$http', function ($scope, $http) {
+	$scope.customer = PortalApp.getLovalVar("customer");
+	var start = encodeURIComponent(new Date().getDateBr());
+	var end = encodeURIComponent(new Date().getNextMonth().getDateBr());
+	$http.post(PortalApp.serviceUrl+"/../mobile/api/history?email="+$scope.customer.email+"&password="+$scope.customer.password+"&startDate="+start+"&endDate="+end).then(function(rep){
+		$scope.history = PortalApp.parseRequest(rep.data);
+		$scope.history = $scope.history.map(function(iten){
+			iten.title = iten.title.split("<br/>")[1];
+			iten.start = new Date(iten.start);
+			iten.start_hour = iten.start.getHourBr();
+			iten.start_date = iten.start.getDateBr();
+			return iten;
+		});
+	});
+
 }]);
 
 // FILE: app/controllers/UnitiController.js
