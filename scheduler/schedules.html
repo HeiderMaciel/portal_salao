@@ -9,11 +9,17 @@
                   <div class="panel">
                     <p class="text_center" >
                       <img src="http://ebelle.vilarika.com.br/images/logo.png"   alt="preview" width="100">
-                      <a href="#" class="btn flat btn-warning Mtop-1">[ <span data-ng-bind='customer.short_name'></span> ] </a>
+                      <a href="#" class="btn flat btn-warning Mtop-1">
+                        [ <span data-ng-bind='customer.short_name'></span> ] 
+                      </a>
+                      <a class="btn btn-primary flat" data-ng-click='exit()'>
+                        <i class="icon-eject"></i> Sair
+                      </a>                      
+                      
                     </p>
                     <div class="divater"><div class="line"></div><span><img src="lobster/images/deviter.png" alt=""></span></div>
-                    <a class="btn btn-primary flat" data-ng-click='openSchelule()'>
-                    <i class=" icon-calendar"></i> Agente um horario
+                    <a class="btn btn-success flat" data-ng-click='openSchelule()'>
+                      <i class=" icon-calendar"></i> Agente um horario
                     </a>
                   </div>
                 </div>

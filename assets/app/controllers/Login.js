@@ -8,6 +8,10 @@ PortalApp.controller('LoginController', ['$scope', '$http', function ($scope, $h
 	$scope.openSchelule = function(){
 		$scope.pageUrl = "./scheduler/scheduler.html";
 	};
+	$scope.exit = function(){
+		PortalApp.setLovalVar("customer", null);
+		$scope.pageUrl = "./scheduler/login.html";
+	};	
 	$scope.openSchelules = function(){
 		$scope.pageUrl = "./scheduler/schedules.html";
 	};	
