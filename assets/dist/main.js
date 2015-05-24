@@ -457,7 +457,7 @@ PortalApp.controller('SchedulesController', ['$scope', '$http', function ($scope
 		$scope.history = PortalApp.parseRequest(rep.data);
 		$scope.history = $scope.history.map(function(iten){
 			iten.title = iten.title.split("<br/>")[1];
-			iten.start = new Date(iten.start);
+			iten.start = FactoryDate.byTime(iten.start);
 			iten.start_hour = iten.start.getHourBr();
 			iten.start_date = iten.start.getDateBr();
 			return iten;
