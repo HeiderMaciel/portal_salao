@@ -1,26 +1,26 @@
 /*
-Sequence.js (http://www.sequencejs.com)
+Sequence.js (https://www.sequencejs.com)
 Version: 1.0.1
 Author: Ian Lunn @IanLunn
-Author URL: http://www.ianlunn.co.uk/
+Author URL: https://www.ianlunn.co.uk/
 Github: https://github.com/IanLunn/Sequence
 
 This is a FREE script and is available under a MIT License:
-http://www.opensource.org/licenses/mit-license.php
+https://www.opensource.org/licenses/mit-license.php
 
 Sequence.js and its dependencies are (c) Ian Lunn Design 2012 - 2013 unless otherwise stated.
 
 Sequence also relies on the following open source scripts:
 
-- jQuery imagesLoaded 2.1.0 (http://github.com/desandro/imagesloaded)
+- jQuery imagesLoaded 2.1.0 (https://github.com/desandro/imagesloaded)
 	Paul Irish et al
-	Available under a MIT License: http://www.opensource.org/licenses/mit-license.php
+	Available under a MIT License: https://www.opensource.org/licenses/mit-license.php
 
-- jQuery TouchWipe 1.1.1 (http://www.netcu.de/jquery-touchwipe-iphone-ipad-library)
-	Andreas Waltl, netCU Internetagentur (http://www.netcu.de)
-	Available under a MIT License: http://www.opensource.org/licenses/mit-license.php
+- jQuery TouchWipe 1.1.1 (https://www.netcu.de/jquery-touchwipe-iphone-ipad-library)
+	Andreas Waltl, netCU Internetagentur (https://www.netcu.de)
+	Available under a MIT License: https://www.opensource.org/licenses/mit-license.php
 
-- Modernizr 2.6.1 Custom Build (http://modernizr.com/) (Named Modernizr for Sequence to prevent conflicts)
+- Modernizr 2.6.1 Custom Build (https://modernizr.com/) (Named Modernizr for Sequence to prevent conflicts)
 	Copyright (c) Faruk Ates, Paul Irish, Alex Sexton
 	Available under the BSD and MIT licenses: www.modernizr.com/license/
 	*/
@@ -151,7 +151,7 @@ Sequence also relies on the following open source scripts:
 			return imagesToPreload;
 		}
 
-		//jQuery imagesLoaded plugin v2.1.0 (http://github.com/desandro/imagesloaded)
+		//jQuery imagesLoaded plugin v2.1.0 (https://github.com/desandro/imagesloaded)
 		function imagesLoaded(imagesToPreload, callback) {
 			var BLANK = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 			var $this = imagesToPreload,
@@ -233,7 +233,7 @@ Sequence also relies on the following open source scripts:
 						return;
 					}
 
-					// cached images don't fire load sometimes, so we reset src, but only when dealing with IE, or image is complete (loaded) and failed manual check webkit hack from http://groups.google.com/group/jquery-dev/browse_thread/thread/eee6ab7b2da50e1f
+					// cached images don't fire load sometimes, so we reset src, but only when dealing with IE, or image is complete (loaded) and failed manual check webkit hack from https://groups.google.com/group/jquery-dev/browse_thread/thread/eee6ab7b2da50e1f
 					if(el.readyState || el.complete) {
 						el.src = BLANK;
 						el.src = src;
@@ -492,7 +492,7 @@ Sequence also relies on the following open source scripts:
 			}
 
 			if(self.settings.swipeNavigation && self.hasTouch) { //if using swipeNavigation and the device has touch capabilities...
-				//jQuery TouchWipe v1.1.1 (http://www.netcu.de/jquery-touchwipe-iphone-ipad-library)
+				//jQuery TouchWipe v1.1.1 (https://www.netcu.de/jquery-touchwipe-iphone-ipad-library)
 				var startX;
 				var startY;
 				var isMoving = false;
@@ -1145,10 +1145,10 @@ Sequence also relies on the following open source scripts:
 		},
 
 		/* Modernizr 2.6.1 (Custom Build) | MIT & BSD
-		 * Build: http://modernizr.com/download/#-svg-prefixed-testprop-testallprops-domprefixes
+		 * Build: https://modernizr.com/download/#-svg-prefixed-testprop-testallprops-domprefixes
 		 */
 		_modernizrForSequence: function() {
-			;window.ModernizrForSequence=function(a,b,c){function x(a){i.cssText=a}function y(a,b){return x(prefixes.join(a+";")+(b||""))}function z(a,b){return typeof a===b}function A(a,b){return!!~(""+a).indexOf(b)}function B(a,b){for(var d in a){var e=a[d];if(!A(e,"-")&&i[e]!==c)return b=="pfx"?e:!0}return!1}function C(a,b,d){for(var e in a){var f=b[a[e]];if(f!==c)return d===!1?a[e]:z(f,"function")?f.bind(d||b):f}return!1}function D(a,b,c){var d=a.charAt(0).toUpperCase()+a.slice(1),e=(a+" "+m.join(d+" ")+d).split(" ");return z(b,"string")||z(b,"undefined")?B(e,b):(e=(a+" "+n.join(d+" ")+d).split(" "),C(e,b,c))}var d="2.6.1",e={},f=b.documentElement,g="modernizrForSequence",h=b.createElement(g),i=h.style,j,k={}.toString,l="Webkit Moz O ms",m=l.split(" "),n=l.toLowerCase().split(" "),o={svg:"http://www.w3.org/2000/svg"},p={},q={},r={},s=[],t=s.slice,u,v={}.hasOwnProperty,w;!z(v,"undefined")&&!z(v.call,"undefined")?w=function(a,b){return v.call(a,b)}:w=function(a,b){return b in a&&z(a.constructor.prototype[b],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(b){var c=self;if(typeof c!="function")throw new TypeError;var d=t.call(arguments,1),e=function(){if(self instanceof e){var a=function(){};a.prototype=c.prototype;var f=new a,g=c.apply(f,d.concat(t.call(arguments)));return Object(g)===g?g:f}return c.apply(b,d.concat(t.call(arguments)))};return e}),p.svg=function(){return!!b.createElementNS&&!!b.createElementNS(o.svg,"svg").createSVGRect};for(var E in p)w(p,E)&&(u=E.toLowerCase(),e[u]=p[E](),s.push((e[u]?"":"no-")+u));return e.addTest=function(a,b){if(typeof a=="object")for(var d in a)w(a,d)&&e.addTest(d,a[d]);else{a=a.toLowerCase();if(e[a]!==c)return e;b=typeof b=="function"?b():b,enableClasses&&(f.className+=" "+(b?"":"no-")+a),e[a]=b}return e},x(""),h=j=null,e._version=d,e._domPrefixes=n,e._cssomPrefixes=m,e.testProp=function(a){return B([a])},e.testAllProps=D,e.prefixed=function(a,b,c){return b?D(a,b,c):D(a,"pfx")},e}(self,self.document);
+			;window.ModernizrForSequence=function(a,b,c){function x(a){i.cssText=a}function y(a,b){return x(prefixes.join(a+";")+(b||""))}function z(a,b){return typeof a===b}function A(a,b){return!!~(""+a).indexOf(b)}function B(a,b){for(var d in a){var e=a[d];if(!A(e,"-")&&i[e]!==c)return b=="pfx"?e:!0}return!1}function C(a,b,d){for(var e in a){var f=b[a[e]];if(f!==c)return d===!1?a[e]:z(f,"function")?f.bind(d||b):f}return!1}function D(a,b,c){var d=a.charAt(0).toUpperCase()+a.slice(1),e=(a+" "+m.join(d+" ")+d).split(" ");return z(b,"string")||z(b,"undefined")?B(e,b):(e=(a+" "+n.join(d+" ")+d).split(" "),C(e,b,c))}var d="2.6.1",e={},f=b.documentElement,g="modernizrForSequence",h=b.createElement(g),i=h.style,j,k={}.toString,l="Webkit Moz O ms",m=l.split(" "),n=l.toLowerCase().split(" "),o={svg:"https://www.w3.org/2000/svg"},p={},q={},r={},s=[],t=s.slice,u,v={}.hasOwnProperty,w;!z(v,"undefined")&&!z(v.call,"undefined")?w=function(a,b){return v.call(a,b)}:w=function(a,b){return b in a&&z(a.constructor.prototype[b],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(b){var c=self;if(typeof c!="function")throw new TypeError;var d=t.call(arguments,1),e=function(){if(self instanceof e){var a=function(){};a.prototype=c.prototype;var f=new a,g=c.apply(f,d.concat(t.call(arguments)));return Object(g)===g?g:f}return c.apply(b,d.concat(t.call(arguments)))};return e}),p.svg=function(){return!!b.createElementNS&&!!b.createElementNS(o.svg,"svg").createSVGRect};for(var E in p)w(p,E)&&(u=E.toLowerCase(),e[u]=p[E](),s.push((e[u]?"":"no-")+u));return e.addTest=function(a,b){if(typeof a=="object")for(var d in a)w(a,d)&&e.addTest(d,a[d]);else{a=a.toLowerCase();if(e[a]!==c)return e;b=typeof b=="function"?b():b,enableClasses&&(f.className+=" "+(b?"":"no-")+a),e[a]=b}return e},x(""),h=j=null,e._version=d,e._domPrefixes=n,e._cssomPrefixes=m,e.testProp=function(a){return B([a])},e.testAllProps=D,e.prefixed=function(a,b,c){return b?D(a,b,c):D(a,"pfx")},e}(self,self.document);
 		},
 
 		/* Set up Sequence's default preloader
@@ -1157,7 +1157,7 @@ Sequence also relies on the following open source scripts:
 		 * prefix = the prefix for the browser Sequence is being viewed in
 		 */
 		_defaultPreloader: function(prependTo, transitions, prefix) {
-			var icon = '<div class="sequence-preloader"><svg class="preloading" xmlns="http://www.w3.org/2000/svg"><circle class="circle" cx="6" cy="6" r="6" /><circle class="circle" cx="22" cy="6" r="6" /><circle class="circle" cx="38" cy="6" r="6" /></svg></div>';
+			var icon = '<div class="sequence-preloader"><svg class="preloading" xmlns="https://www.w3.org/2000/svg"><circle class="circle" cx="6" cy="6" r="6" /><circle class="circle" cx="22" cy="6" r="6" /><circle class="circle" cx="38" cy="6" r="6" /></svg></div>';
 
 			$("head").append("<style>.sequence-preloader{height: 100%;position: absolute;width: 100%;z-index: 999999;}@"+prefix+"keyframes preload{0%{opacity: 1;}50%{opacity: 0;}100%{opacity: 1;}}.sequence-preloader .preloading .circle{fill: #ff9442;display: inline-block;height: 12px;position: relative;top: -50%;width: 12px;"+prefix+"animation: preload 1s infinite; animation: preload 1s infinite;}.preloading{display:block;height: 12px;margin: 0 auto;top: 50%;margin-top:-6px;position: relative;width: 48px;}.sequence-preloader .preloading .circle:nth-child(2){"+prefix+"animation-delay: .15s; animation-delay: .15s;}.sequence-preloader .preloading .circle:nth-child(3){"+prefix+"animation-delay: .3s; animation-delay: .3s;}.preloading-complete{opacity: 0;visibility: hidden;"+prefix+"transition-duration: 1s; transition-duration: 1s;}div.inline{background-color: #ff9442; margin-right: 4px; float: left;}</style>");
 			prependTo.prepend(icon);
@@ -1274,7 +1274,7 @@ Sequence also relies on the following open source scripts:
 		//hashTags Settings
 		//when using hashTags, please include a reference to Ben Alman's jQuery HashChange plugin above your reference to Sequence.js
 
-		//info: http://benalman.com/projects/jquery-hashchange-plugin/
+		//info: https://benalman.com/projects/jquery-hashchange-plugin/
 		//plugin: https://raw.github.com/cowboy/jquery-hashchange/v1.3/jquery.ba-hashchange.min.js
 		//GitHub: https://github.com/cowboy/jquery-hashchange
 		hashTags: false, //when a frame is navigated to, change the hashtag to the frames ID

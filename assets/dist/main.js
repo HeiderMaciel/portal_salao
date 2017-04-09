@@ -2,10 +2,10 @@
 // FILE: app/bower_components/angular/angular.min.js
 /*
  AngularJS v1.3.5
- (c) 2010-2014 Google, Inc. http://angularjs.org
+ (c) 2010-2014 Google, Inc. https://angularjs.org
  License: MIT
 */
-(function(U,V,u){'use strict';function A(b){return function(){var a=arguments[0],c;c="["+(b?b+":":"")+a+"] http://errors.angularjs.org/1.3.5/"+(b?b+"/":"")+a;for(a=1;a<arguments.length;a++){c=c+(1==a?"?":"&")+"p"+(a-1)+"=";var d=encodeURIComponent,e;e=arguments[a];e="function"==typeof e?e.toString().replace(/ \{[\s\S]*$/,""):"undefined"==typeof e?"undefined":"string"!=typeof e?JSON.stringify(e):e;c+=d(e)}return Error(c)}}function Ra(b){if(null==b||Sa(b))return!1;var a=b.length;return b.nodeType===
+(function(U,V,u){'use strict';function A(b){return function(){var a=arguments[0],c;c="["+(b?b+":":"")+a+"] https://errors.angularjs.org/1.3.5/"+(b?b+"/":"")+a;for(a=1;a<arguments.length;a++){c=c+(1==a?"?":"&")+"p"+(a-1)+"=";var d=encodeURIComponent,e;e=arguments[a];e="function"==typeof e?e.toString().replace(/ \{[\s\S]*$/,""):"undefined"==typeof e?"undefined":"string"!=typeof e?JSON.stringify(e):e;c+=d(e)}return Error(c)}}function Ra(b){if(null==b||Sa(b))return!1;var a=b.length;return b.nodeType===
 na&&a?!0:I(b)||y(b)||0===a||"number"===typeof a&&0<a&&a-1 in b}function r(b,a,c){var d,e;if(b)if(F(b))for(d in b)"prototype"==d||"length"==d||"name"==d||b.hasOwnProperty&&!b.hasOwnProperty(d)||a.call(c,b[d],d,b);else if(y(b)||Ra(b)){var f="object"!==typeof b;d=0;for(e=b.length;d<e;d++)(f||d in b)&&a.call(c,b[d],d,b)}else if(b.forEach&&b.forEach!==r)b.forEach(a,c,b);else for(d in b)b.hasOwnProperty(d)&&a.call(c,b[d],d,b);return b}function Bd(b,a,c){for(var d=Object.keys(b).sort(),e=0;e<d.length;e++)a.call(c,
 b[d[e]],d[e]);return d}function kc(b){return function(a,c){b(c,a)}}function Cd(){return++kb}function lc(b,a){a?b.$$hashKey=a:delete b.$$hashKey}function D(b){for(var a=b.$$hashKey,c=1,d=arguments.length;c<d;c++){var e=arguments[c];if(e)for(var f=Object.keys(e),g=0,h=f.length;g<h;g++){var k=f[g];b[k]=e[k]}}lc(b,a);return b}function $(b){return parseInt(b,10)}function x(){}function oa(b){return b}function ca(b){return function(){return b}}function G(b){return"undefined"===typeof b}function z(b){return"undefined"!==
 typeof b}function K(b){return null!==b&&"object"===typeof b}function I(b){return"string"===typeof b}function X(b){return"number"===typeof b}function fa(b){return"[object Date]"===Ja.call(b)}function F(b){return"function"===typeof b}function lb(b){return"[object RegExp]"===Ja.call(b)}function Sa(b){return b&&b.window===b}function Ta(b){return b&&b.$evalAsync&&b.$watch}function Ua(b){return"boolean"===typeof b}function mc(b){return!(!b||!(b.nodeName||b.prop&&b.attr&&b.find))}function Dd(b){var a={};
@@ -255,7 +255,7 @@ d)}):m.addOption(e.value,d);d.on("$destroy",function(){m.removeOption(e.value)})
 // FILE: app/bower_components/angular-sanitize/angular-sanitize.min.js
 /*
  AngularJS v1.3.5
- (c) 2010-2014 Google, Inc. http://angularjs.org
+ (c) 2010-2014 Google, Inc. https://angularjs.org
  License: MIT
 */
 (function(n,h,p){'use strict';function E(a){var d=[];s(d,h.noop).chars(a);return d.join("")}function g(a){var d={};a=a.split(",");var c;for(c=0;c<a.length;c++)d[a[c]]=!0;return d}function F(a,d){function c(a,b,c,l){b=h.lowercase(b);if(t[b])for(;f.last()&&u[f.last()];)e("",f.last());v[b]&&f.last()==b&&e("",b);(l=w[b]||!!l)||f.push(b);var m={};c.replace(G,function(a,b,d,c,e){m[b]=r(d||c||e||"")});d.start&&d.start(b,m,l)}function e(a,b){var c=0,e;if(b=h.lowercase(b))for(c=f.length-1;0<=c&&f[c]!=b;c--);
@@ -284,8 +284,8 @@ PortalApp.getLovalVar = function(name) {
 	return JSON.parse(localStorage.getItem(name));
 };
 
-PortalApp.serviceUrl = "http://ebelle.vilarika.com.br/site";//production
-//PortalApp.serviceUrl = "http://localhost:7171/site";//local
+PortalApp.serviceUrl = "https://ebelle.vilarika.com.br/site";//production
+//PortalApp.serviceUrl = "https://localhost:7171/site";//local
 
 // FILE: app/controllers/JobRequest.js
 PortalApp.controller('JobRequestController', ['$scope', '$http', function ($scope, $http) {

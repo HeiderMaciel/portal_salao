@@ -1,6 +1,6 @@
 /*!
  * FullCalendar v1.6.1
- * Docs & License: http://arshaw.com/fullcalendar/
+ * Docs & License: https://arshaw.com/fullcalendar/
  * (c) 2013 Adam Shaw
  */
 
@@ -1404,7 +1404,7 @@ function parseDate(s, ignoreTimezone) { // ignoreTimezone defaults to true
 
 
 function parseISO8601(s, ignoreTimezone) { // ignoreTimezone defaults to false
-	// derived from http://delete.me.uk/2005/03/iso8601.html
+	// derived from https://delete.me.uk/2005/03/iso8601.html
 	// TODO: for a know glitch/feature, read tests/issue_206_parseDate_dst.html
 	var m = s.match(/^([0-9]{4})(-([0-9]{2})(-([0-9]{2})([T ]([0-9]{2}):([0-9]{2})(:([0-9]{2})(\.([0-9]+))?)?(Z|(([-+])([0-9]{2})(:?([0-9]{2}))?))?)?)?)?$/);
 	if (!m) {

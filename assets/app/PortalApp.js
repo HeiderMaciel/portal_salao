@@ -10,5 +10,5 @@ PortalApp.getLovalVar = function(name) {
 	return JSON.parse(localStorage.getItem(name));
 };
 
-PortalApp.serviceUrl = "http://ebelle.vilarika.com.br/site";//production
-//PortalApp.serviceUrl = "http://localhost:7171/site";//local
+PortalApp.serviceUrl = "https://ebelle.vilarika.com.br/site";//production
+//PortalApp.serviceUrl = "https://localhost:7171/site";//local
