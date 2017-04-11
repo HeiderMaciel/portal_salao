@@ -11,4 +11,4 @@ PortalApp.getLovalVar = function(name) {
 };
 
 PortalApp.serviceUrl = "https://ebelle.vilarika.com.br/site";//production
-//PortalApp.serviceUrl = "https://localhost:7171/site";//local
+//PortalApp.serviceUrl = "https://66.228.57.73:7171/site";//local
