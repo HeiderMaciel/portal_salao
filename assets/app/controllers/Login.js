@@ -16,6 +16,14 @@ PortalApp.controller('LoginController', ['$scope', '$http', function ($scope, $h
 		$scope.pageUrl = "./scheduler/schedules.html";
 	};	
 	$scope.login = function(user, password){
+		if (user == undefined || user == "") {
+			alert ("Por favor informe um email!");
+			return
+		}
+		if (password == undefined || password == "") {
+			alert ("Por favor informe uma senha!")
+			return
+		}
 		$http.post(PortalApp.serviceUrl+"/../mobile/api/login?email="+user+"&password="+password).then(function(rep){
 			var customer = PortalApp.parseRequest(rep.data);
 			customer.password = password;
