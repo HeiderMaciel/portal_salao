@@ -43,9 +43,11 @@ var getDates = function(){
 	var today = new Date();
 	var nextMonth = new Date().getNextMonth();
 	var dates = [];
+	// 02/07/2017 rigel - pega dia corrente
+	dates.push({name : today.getTextWhenShort(), value: today.getDateBr()});
 	while(today.getTime() < nextMonth.getTime()){
 		today.setTime(today.getTime()+ONE_DAY);
-		dates.push({name : today.getTextWhen(), value: today.getDateBr()});
+		dates.push({name : today.getTextWhenShort(), value: today.getDateBr()});
 	}
 	return dates;
 };
