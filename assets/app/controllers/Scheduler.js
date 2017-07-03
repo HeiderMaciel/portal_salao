@@ -2,12 +2,20 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
 	$scope.customer = PortalApp.getLovalVar("customer");
 	var start = encodeURIComponent(new Date().getDateBr());
 	var end = encodeURIComponent(new Date().getNextMonth().getDateBr());
-	$http.post(PortalApp.serviceUrl+"/../mobile/api/users?email="+$scope.customer.email+"&password="+$scope.customer.password).then(function(rep){
+	$http.post(PortalApp.serviceUrl+"/../mobile/api/users?email="+
+		$scope.customer.email+
+		"&password="+$scope.customer.password+
+		"&company="+$scope.customer.company
+		).then(function(rep){
 		$scope.users = PortalApp.parseRequest(rep.data);
 	});
 	$scope.selectServices = function(){
 
-		$http.post(PortalApp.serviceUrl+"/../mobile/api/activities?email="+$scope.customer.email+"&password="+$scope.customer.password+"&user="+$scope.user.id).then(function(rep){
+		$http.post(PortalApp.serviceUrl+"/../mobile/api/activities?email="+
+			$scope.customer.email+
+			"&password="+$scope.customer.password+
+			"&company="+$scope.customer.company+
+			"&user="+$scope.user.id).then(function(rep){
 			$scope.activityData = PortalApp.parseRequest(rep.data);
 			$scope.activityData.hours = getHours($scope.activityData.start, $scope.activityData.end, $scope.activityData.interval);
 			$scope.activityData.dates = getDates();
@@ -16,13 +24,14 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
 	$scope.schedule = function(user, date, hour, activity){
 		var params = "?email="+$scope.customer.email+
 					 "&password="+$scope.customer.password+
+					 "&company="+$scope.customer.company+
 					 "&user="+user.id+
 					 "&customer="+$scope.customer.id+
 					 "&date="+encodeURIComponent(date.value)+
 					 "&hour_start="+encodeURIComponent(hour.name)+
 					 "&activity="+encodeURIComponent(activity.id);
 		$http.post(PortalApp.serviceUrl+"/../mobile/api/schedule"+params).then(function(rep){
-			alert("Agendamento efetudo com sucesso!");
+			alert("Agendamento efetuado com sucesso!");
 			$scope.openSchelules();
 		});
 

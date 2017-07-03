@@ -346,6 +346,28 @@ PortalApp.controller('JobRequestController', ['$scope', '$http', function ($scop
 }]);
 
 // FILE: app/controllers/Login.js
+//Funcion utils
+// duplicada de util.js
+// rigel 02/07/2017
+function gup(name) {
+	var searchString = window.location.search.substring(1);
+	var variableArray = searchString.split('&');
+	var results = [];
+	var result = "";
+	for (var i = 0; i < variableArray.length; i++) {
+		var keyValuePair = variableArray[i].split('=');
+		if (keyValuePair[0] == name) {
+			results.push(decodeURIComponent(keyValuePair[1]).replace("+", " "));
+		}
+	}
+	if (results.length == 1) {
+		return results[0];
+	} else if (results.length > 1) {
+		result = results;
+	}
+	return result;
+}
+
 PortalApp.controller('LoginController', ['$scope', '$http', function ($scope, $http) {
 	$scope.cutomer = PortalApp.getLovalVar("customer");
 	if($scope.cutomer){
@@ -372,11 +394,12 @@ PortalApp.controller('LoginController', ['$scope', '$http', function ($scope, $h
 			alert ("Por favor informe uma senha!")
 			return
 		}
-		$http.post(PortalApp.serviceUrl+"/../mobile/api/login?email="+user+"&password="+password).then(function(rep){
+		$http.post(PortalApp.serviceUrl+"/../mobile/api/login?email="+user+
+			"&password="+password+"&company="+gup('id')).then(function(rep){
 			var customer = PortalApp.parseRequest(rep.data);
 			customer.password = password;
 			PortalApp.setLovalVar("customer",customer);
-			$scope.pageUrl = "./scheduler/schedules.html";
+			$scope.pageUrl = "./scheduler/schedules.html";		
 		}, function(){
 			alert("E-mail ou senha invalidos!");
 		});
@@ -407,12 +430,20 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
 	$scope.customer = PortalApp.getLovalVar("customer");
 	var start = encodeURIComponent(new Date().getDateBr());
 	var end = encodeURIComponent(new Date().getNextMonth().getDateBr());
-	$http.post(PortalApp.serviceUrl+"/../mobile/api/users?email="+$scope.customer.email+"&password="+$scope.customer.password).then(function(rep){
+	$http.post(PortalApp.serviceUrl+"/../mobile/api/users?email="+
+		$scope.customer.email+
+		"&password="+$scope.customer.password+
+		"&company="+$scope.customer.company
+		).then(function(rep){
 		$scope.users = PortalApp.parseRequest(rep.data);
 	});
 	$scope.selectServices = function(){
 
-		$http.post(PortalApp.serviceUrl+"/../mobile/api/activities?email="+$scope.customer.email+"&password="+$scope.customer.password+"&user="+$scope.user.id).then(function(rep){
+		$http.post(PortalApp.serviceUrl+"/../mobile/api/activities?email="+
+			$scope.customer.email+
+			"&password="+$scope.customer.password+
+			"&company="+$scope.customer.company+
+			"&user="+$scope.user.id).then(function(rep){
 			$scope.activityData = PortalApp.parseRequest(rep.data);
 			$scope.activityData.hours = getHours($scope.activityData.start, $scope.activityData.end, $scope.activityData.interval);
 			$scope.activityData.dates = getDates();
@@ -421,13 +452,14 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
 	$scope.schedule = function(user, date, hour, activity){
 		var params = "?email="+$scope.customer.email+
 					 "&password="+$scope.customer.password+
+					 "&company="+$scope.customer.company+
 					 "&user="+user.id+
 					 "&customer="+$scope.customer.id+
 					 "&date="+encodeURIComponent(date.value)+
 					 "&hour_start="+encodeURIComponent(hour.name)+
 					 "&activity="+encodeURIComponent(activity.id);
 		$http.post(PortalApp.serviceUrl+"/../mobile/api/schedule"+params).then(function(rep){
-			alert("Agendamento efetudo com sucesso!");
+			alert("Agendamento efetuado com sucesso!");
 			$scope.openSchelules();
 		});
 
@@ -465,7 +497,11 @@ PortalApp.controller('SchedulesController', ['$scope', '$http', function ($scope
 	$scope.customer = PortalApp.getLovalVar("customer");
 	var start = encodeURIComponent(new Date().getDateBr());
 	var end = encodeURIComponent(new Date().getNextMonth().getDateBr());
-	$http.post(PortalApp.serviceUrl+"/../mobile/api/history?email="+$scope.customer.email+"&password="+$scope.customer.password+"&startDate="+start+"&endDate="+end).then(function(rep){
+	$http.post(PortalApp.serviceUrl+"/../mobile/api/history?email="+
+		$scope.customer.email+
+		"&password="+$scope.customer.password+
+		"&company="+$scope.customer.company+
+		"&startDate="+start+"&endDate="+end).then(function(rep){
 		$scope.history = PortalApp.parseRequest(rep.data);
 		$scope.history = $scope.history.map(function(iten){
 			iten.title = iten.title.split("<br/>")[1];
