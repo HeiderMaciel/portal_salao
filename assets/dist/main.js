@@ -290,6 +290,23 @@ if (document.location.href.indexOf("local") != -1) {
 	PortalApp.serviceUrl = "http://ebelle.vilarika.com.br/site";//production
 }
 
+/*
+ * Date Helper
+ */
+Date.prototype.getDateBr = function() {
+	var month = this.getMonth() + 1;
+	if (month < 10) {
+		month = "0" + month;
+	}
+
+	var day = this.getDate();
+	if (day < 10) {
+		day = "0" + day;
+	}
+
+	var date_str = day + "/" + month + "/" + this.getFullYear()
+	return date_str;
+}
 
 // FILE: app/controllers/JobRequest.js
 PortalApp.controller('JobRequestController', ['$scope', '$http', function ($scope, $http) {
@@ -497,8 +514,8 @@ var getHours = function(start, end, interval){
 // FILE: app/controllers/Schedules.js
 PortalApp.controller('SchedulesController', ['$scope', '$http', function ($scope, $http) {
 	$scope.customer = PortalApp.getLovalVar("customer");
-	var start = encodeURIComponent(new Date().getDateBr());
-	var end = encodeURIComponent(new Date().getNextMonth().getDateBr());
+	var start = encodeURIComponent( (new Date()).getDateBr() );
+	var end = encodeURIComponent( (new Date()).getNextMonth().getDateBr() );
 	$http.post(PortalApp.serviceUrl+"/../mobile/api/history?email="+
 		$scope.customer.email+
 		"&password="+$scope.customer.password+
