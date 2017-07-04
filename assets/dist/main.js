@@ -399,7 +399,7 @@ PortalApp.controller('LoginController', ['$scope', '$http', function ($scope, $h
 			var customer = PortalApp.parseRequest(rep.data);
 			customer.password = password;
 			PortalApp.setLovalVar("customer",customer);
-			$scope.pageUrl = "./scheduler/schedules.html";		
+			$scope.pageUrl = "./scheduler/schedules.html";
 		}, function(){
 			alert("E-mail ou senha invalidos!");
 		});
@@ -471,7 +471,7 @@ var getDates = function(){
 	var today = new Date();
 	var nextMonth = new Date().getNextMonth();
 	var dates = [];
-	// 02/07/2017 rigel - pega dia corrente
+	// 02/07/2017 rigel - pega dia corrente - antes começava de amanhã
 	dates.push({name : today.getTextWhenShort(), value: today.getDateBr()});
 	while(today.getTime() < nextMonth.getTime()){
 		today.setTime(today.getTime()+ONE_DAY);

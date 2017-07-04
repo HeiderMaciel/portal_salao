@@ -43,7 +43,7 @@ var getDates = function(){
 	var today = new Date();
 	var nextMonth = new Date().getNextMonth();
 	var dates = [];
-	// 02/07/2017 rigel - pega dia corrente
+	// 02/07/2017 rigel - pega dia corrente - antes começava de amanhã
 	dates.push({name : today.getTextWhenShort(), value: today.getDateBr()});
 	while(today.getTime() < nextMonth.getTime()){
 		today.setTime(today.getTime()+ONE_DAY);

@@ -96,8 +96,22 @@
     <!--Load JS config application-->
     <script src="assets/dist/main.js"></script>
     <script src="lobster/js/app.js"></script>
-    <!--end JS config application-->
+    <!--end JS config application
     <script src="https://ebelle.vilarika.com.br/js/default/date.js"></script>
-    <script src="https://ebelle.vilarika.com.br/js/default/global.js"></script>
+    <script src="https://ebelle.vilarika.com.br/js/default/global.js"></script-->
+    <script> 
+        if (document.location.href.indexOf("local") != -1) {
+            src="http://localhost:7171/js/default/date.js"
+        } else {
+            src="http://ebelle.vilarika.com.br/js/default/date.js"
+        }
+    </script>
+    <script>
+        if (document.location.href.indexOf("local") != -1) {
+            src="http://localhost:7171/js/default/global.js"
+        } else {
+            src="http://ebelle.vilarika.com.br/js/default/global.js"
+        }
+    </script>
   </body>
 </html>

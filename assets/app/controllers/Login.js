@@ -51,7 +51,7 @@ PortalApp.controller('LoginController', ['$scope', '$http', function ($scope, $h
 			var customer = PortalApp.parseRequest(rep.data);
 			customer.password = password;
 			PortalApp.setLovalVar("customer",customer);
-			$scope.pageUrl = "./scheduler/schedules.html";		
+			$scope.pageUrl = "./scheduler/schedules.html";
 		}, function(){
 			alert("E-mail ou senha invalidos!");
 		});
