@@ -290,24 +290,6 @@ if (document.location.href.indexOf("local") != -1) {
 	PortalApp.serviceUrl = "http://ebelle.vilarika.com.br/site";//production
 }
 
-/*
- * Date Helper
- */
-Date.prototype.getDateBr = function() {
-	var month = this.getMonth() + 1;
-	if (month < 10) {
-		month = "0" + month;
-	}
-
-	var day = this.getDate();
-	if (day < 10) {
-		day = "0" + day;
-	}
-
-	var date_str = day + "/" + month + "/" + this.getFullYear()
-	return date_str;
-}
-
 // FILE: app/controllers/JobRequest.js
 PortalApp.controller('JobRequestController', ['$scope', '$http', function ($scope, $http) {
 
