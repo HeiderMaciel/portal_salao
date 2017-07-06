@@ -20,6 +20,21 @@
               <input type="email" name="email" class="input-block-level" required data-ng-model='email'>
               <label>Password</label>
               <input type="password" name="password" class="input-block-level" required data-ng-model='password'>
+                    <div class="toolbar clearfix">
+                      <div>
+                        <a href="#" onclick="show_box('forgot-box'); return false;" class="forgot-password-link">
+                          <i class="icon-arrow-left"></i>
+                          Esqueci minha senha
+                        </a>
+                      </div>
+
+                      <div>
+                        <a data-ng-click='joinus()' class="user-signup-link">
+                          Cadastre-se
+                          <i class="icon-arrow-right"></i>
+                        </a>
+                      </div>
+                    </div>
               <button type="submit" data-ng-click="login(email, password)" class="btn btn-primary btn-large flat input-block-level">Login</button>
             </div>
           </form><!-- End Form Login -->

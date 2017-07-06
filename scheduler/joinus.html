@@ -1,0 +1,55 @@
+<section id="content" data-ng-controller='JoinusController'>
+  <div class="inner-wrapper">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="singup_area with_bg">
+          <form class="lobstrer_form_validation">
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="panel">
+                  <p class="text_center" >
+                    <img src="http://ebelle.vilarika.com.br/images/logo_ftr_ebelle.png"   alt="preview" width="50">
+                    <a href="#" class="btn flat btn-warning Mtop-1">[ <span data-ng-bind='customer.short_name'></span> ] </a>
+                    <a class="btn btn-primary flat" data-ng-click='exit()'>
+                      <i class="icon-eject"></i> Sair
+                    </a>                                          
+                  </p>
+                  <div class="divater"><div class="line"></div><span><img src="lobster/images/deviter.png" alt=""></span></div>
+                    <a class="btn btn-success flat" data-ng-click='openSchelules()'>
+                      <i class=" icon-calendar"></i> Ver agendamentos
+                    </a>
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="span6">
+                <div class="panel">
+                    <label>Nome Completo</label>
+                    <input type="text" name="name" class="input-block-level" required data-ng-model='name'>
+                    <label>Celular</label>
+                    <input type="text" name="mobilephone" class="input-block-level" required data-ng-model='mobilephone'>
+                    <label>Fixo</label>
+                    <input type="text" name="phone" class="input-block-level" required data-ng-model='phone'>
+                </div>
+              </div>
+              <div class="span6">
+                <div class="panel">
+                    <label>Email</label>
+                    <input type="email" name="email" class="input-block-level" required data-ng-model='email'>
+                    <label>Senha</label>
+                    <input type="password" name="password" class="input-block-level" required data-ng-model='password'>
+                    <label>Confirmar Senha</label>
+                    <input type="password" name="password2" class="input-block-level" required data-ng-model='password2'>
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+                <button type="button" data-ng-click='joinus(name, mobilephone, phone, email, password, password2)' class="btn btn-info btn-large input-block-level flat">Cadastrar</button>
+            </div>
+            </form><!-- End Form-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
