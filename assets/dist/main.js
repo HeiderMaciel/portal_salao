@@ -388,6 +388,27 @@ PortalApp.controller('LoginController', ['$scope', '$http', function ($scope, $h
 	$scope.openSchelules = function(){
 		$scope.pageUrl = "./scheduler/schedules.html";
 	};	
+	$scope.rememberPassword = function(email){
+		var emailValidation = /^([a-z0-9._%\-+]+@(?:[a-z0-9\-]+\.)+[a-z]{2,4}$)/;
+		if (!emailValidation.test(email) && email.length > 10){
+			alert ('E-mail inválido!\n')
+			return;
+		} else if (email.indexOf("@") <= 1) {
+			alert ('E-mail inválido!\n')
+			return;
+		} else {
+			//alert ('E-mail ok!\n')
+		}
+		$http.post(PortalApp.serviceUrl+"/../security/remember_password", {email : email}).success(function(results){
+	        if(results === 1 || results == "1"){
+				alert("Enviado com sucesso para " + email);
+	        }else{
+	          alert(eval(results));
+	        }
+		}).error(function(){
+			alert("Erro ao processar requisição!");
+		});	
+	}
 	$scope.login = function(user, password){
 		if (user == undefined || user == "") {
 			alert ("Por favor informe um email!");
