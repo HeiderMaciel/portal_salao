@@ -1,8 +1,14 @@
 module.exports = function(grunt) {
-    var srcPath         = ['app/*.js','app/controllers/*.js'];
-    var libPaths        = ['app/bower_components/angular/angular.min.js', 'app/bower_components/angular-sanitize/angular-sanitize.min.js', 'app/bower_components/javascript-md5/js/md5.min.js'];
-    var specsPath       = 'specs/**/*spec*.js';
-    var helperPath      = 'specs/helpers/*.js';
+    var srcPath = ['app/*.js','app/controllers/*.js'];
+    var depPath = ['app/bower_components'];
+    var libPaths = [
+        depPath + '/angular/angular.min.js', 
+        depPath + '/angular-sanitize/angular-sanitize.min.js', 
+        depPath + '/javascript-md5/js/md5.min.js',
+        depPath + '/angular-bootstrap/ui-bootstrap-tpls.js'
+    ];
+    var specsPath = 'specs/**/*spec*.js';
+    var helperPath = 'specs/helpers/*.js';
 
     grunt.initConfig({
         concat: {

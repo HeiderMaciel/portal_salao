@@ -1,6 +1,11 @@
 PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope, $http) {
     $scope.customer = PortalApp.getLovalVar("customer");
     $scope.customerLogoUrl = $scope.customer.thumb_web;
+
+    $scope.dateOptions = {
+        minDate: (new Date()),
+        maxDate: (new Date()).getNextMonth()
+    };
     
     var start = encodeURIComponent(new Date().getDateBr());
     var end = encodeURIComponent(new Date().getNextMonth().getDateBr());
@@ -29,7 +34,7 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
                      "&company="+$scope.customer.company+
                      "&user="+user.id+
                      "&customer="+$scope.customer.id+
-                     "&date="+encodeURIComponent(date.value)+
+                     "&date="+encodeURIComponent(date.getDateBr())+
                      "&hour_start="+encodeURIComponent(hour.name)+
                      "&activity="+encodeURIComponent(activity.id);
         $http.post(PortalApp.serviceUrl+"/../mobile/api/schedule"+params).then(function(rep){
@@ -40,6 +45,7 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
     };
 
 }]);
+
 var getDates = function(){
     var ONE_DAY = 86400 * 1000;
     var today = new Date();
