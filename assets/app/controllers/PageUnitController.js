@@ -1,9 +1,10 @@
 PortalApp.controller('PageUnitController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
-
-	$http.get(PortalApp.serviceUrl+"/unitByName?name="+$location.$$path.replace('/','')).then(function(repose){
-		$scope.unit = PortalApp.parseRequest(repose.data);
-		setTimeout(function(){
-			initializeMap();
-		}, 500);
-	});
+    var unit = (new URL(window.location.href)).searchParams.get('unit');
+    debugger;
+    $http.get(PortalApp.serviceUrl+"/unitByName?name="+unit).then(function(repose){
+        $scope.unit = PortalApp.parseRequest(repose.data);
+        setTimeout(function(){
+            initializeMap();
+        }, 500);
+    });
 }]);
