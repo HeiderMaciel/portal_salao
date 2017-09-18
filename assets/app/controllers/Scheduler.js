@@ -1,6 +1,7 @@
 PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope, $http) {
     $scope.customer = PortalApp.getLovalVar("customer");
     $scope.customerLogoUrl = $scope.customer.thumb_web;
+    $scope.date = (new Date());
 
     $scope.dateOptions = {
         minDate: (new Date()),
