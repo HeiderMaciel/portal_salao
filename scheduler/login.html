@@ -7,11 +7,11 @@
           <form class="lobstrer_form_validation">
             <div class="panel">
               <p class="text_center" >
-                <img src="lobster/images/loader.gif" data-src="http://ebelle.vilarika.com.br/images/logo_br_name_ebelle.png"  alt="preview" width="100"/>
+                <img ng-src="{{ customerLogoUrl }}"  alt="preview" width="100"/>
               </p>
               <div class="divater"><div class="line"></div><span><img src="lobster/images/deviter.png" alt=""></span></div>
               <div class="gridmasonry">
-                  <button type="button" class="btn btn-info btn-large input-block-level flat">Facebook Connect</button>
+                  <button type="button" class="btn btn-info btn-large input-block-level flat">Entrar com Facebook</button>
               </div>
               <br/>
               <br/>
@@ -20,21 +20,21 @@
               <input type="email" name="email" class="input-block-level" required data-ng-model='email'>
               <label>Password</label>
               <input type="password" name="password" class="input-block-level" required data-ng-model='password'>
-                    <div class="toolbar clearfix">
-                      <div>
-                        <a data-ng-click="rememberPassword(email)" class="forgot-password-link">
-                          <i class="icon-arrow-left"></i>
-                          Esqueci minha senha
-                        </a>
-                      </div>
+                <div class="toolbar row clearfix">
+                  <div class="forgot-password">
+                    <a data-ng-click="rememberPassword(email)" class="forgot-password-link">
+                      <i class="icon-arrow-left"></i>
+                      Esqueci minha senha
+                    </a>
+                  </div>
 
-                      <div>
-                        <a data-ng-click='joinus()' class="user-signup-link">
-                          Cadastre-se
-                          <i class="icon-arrow-right"></i>
-                        </a>
-                      </div>
-                    </div>
+                  <div class="user-signup">
+                    <a data-ng-click='joinus()' class="user-signup-link">
+                      Cadastre-se
+                      <i class="icon-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
               <button type="submit" data-ng-click="login(email, password)" class="btn btn-primary btn-large flat input-block-level">Login</button>
             </div>
           </form><!-- End Form Login -->

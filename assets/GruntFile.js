@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
     var srcPath         = ['app/*.js','app/controllers/*.js'];
-    var libPaths        = ['app/bower_components/angular/angular.min.js', 'app/bower_components/angular-sanitize/angular-sanitize.min.js'];
+    var libPaths        = ['app/bower_components/angular/angular.min.js', 'app/bower_components/angular-sanitize/angular-sanitize.min.js', 'app/bower_components/javascript-md5/js/md5.min.js'];
     var specsPath       = 'specs/**/*spec*.js';
     var helperPath      = 'specs/helpers/*.js';
 
@@ -48,6 +48,10 @@ module.exports = function(grunt) {
             }
         },
         watch: {
+            concat : {
+                files: [srcPath],
+                tasks: ['concat']
+            },
             pivotal : {
                 files: [specsPath].concat(srcPath), 
                 tasks: ['jshint', 'uglify', 'concat']
