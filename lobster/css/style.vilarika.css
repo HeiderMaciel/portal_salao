@@ -1,0 +1,11 @@
+.forgot-password,
+.user-signup {
+    display: inline-block;
+}
+
+.forgot-password { float: left; }
+.user-signup { float: right; }
+
+.row {
+    margin: 10px 0 20px 0;
+}
