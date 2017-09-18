@@ -90,10 +90,10 @@ PortalApp.controller('LoginController', ['$scope', '$http', '$location', functio
             return
         }
         $http.post(PortalApp.serviceUrl+"/../mobile/api/login?email="+user+
-            "&password="+password+"&company="+gup('id')).then(function(rep){
+            "&password="+md5(password.toLowerCase())+"&company="+gup('id')).then(function(rep){
             var customer = PortalApp.parseRequest(rep.data);
             customer.thumb_web = $scope.customerLogoUrl;
-            customer.password = password;
+            customer.password = md5(password.toLowerCase());
             PortalApp.setLovalVar("customer",customer);
             $scope.pageUrl = "./scheduler/schedules.html";
         }, function(){
