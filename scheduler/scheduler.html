@@ -27,16 +27,24 @@
                     <label>Selecione um Profissional</label>
                     <select class="input-block-level" required data-ng-change="selectServices()" data-ng-model='user' data-ng-options="p.name for p in users">
                     </select>
+                    <!--
                     <label>Selecione uma Data</label>
                     <select class="input-block-level" required data-ng-model='date' data-ng-options="a.name for a in activityData.dates">
-                    </select>                    
+                    </select>
+                  -->
+                    <br/>
+                    <label>Selecione uma Data</label>
+                    <div ng-show="user" uib-datepicker class="input-block-level" ng-model="date" datepicker-options="dateOptions"></div>
+                    <div ng-show="!user"><span>Selecione um profissional primeiro</span></div>
                 </div>
               </div>
+              <br/>
               <div class="span6">
                 <div class="panel">
                   <label>Selecione um Serviço</label>
                   <select class="input-block-level" required data-ng-model='activity' data-ng-options="a.name for a in activityData.activities">
                   </select>
+                  <br/>
                     <label>Selecione um Horário</label>
                     <select class="input-block-level" required data-ng-model='hour' data-ng-options="a.name for a in activityData.hours">
                     </select>                  
