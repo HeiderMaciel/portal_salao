@@ -48,6 +48,10 @@ module.exports = function(grunt) {
             }
         },
         watch: {
+            concat : {
+                files: [srcPath],
+                tasks: ['concat']
+            },
             pivotal : {
                 files: [specsPath].concat(srcPath), 
                 tasks: ['jshint', 'uglify', 'concat']

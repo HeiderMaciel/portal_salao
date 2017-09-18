@@ -349,85 +349,104 @@ PortalApp.controller('JobRequestController', ['$scope', '$http', function ($scop
 // duplicada de util.js
 // rigel 02/07/2017
 function gup(name) {
-	var searchString = window.location.search.substring(1);
-	var variableArray = searchString.split('&');
-	var results = [];
-	var result = "";
-	for (var i = 0; i < variableArray.length; i++) {
-		var keyValuePair = variableArray[i].split('=');
-		if (keyValuePair[0] == name) {
-			results.push(decodeURIComponent(keyValuePair[1]).replace("+", " "));
-		}
-	}
-	if (results.length == 1) {
-		return results[0];
-	} else if (results.length > 1) {
-		result = results;
-	}
-	return result;
+    var searchString = window.location.search.substring(1);
+    var variableArray = searchString.split('&');
+    var results = [];
+    var result = "";
+    for (var i = 0; i < variableArray.length; i++) {
+        var keyValuePair = variableArray[i].split('=');
+        if (keyValuePair[0] == name) {
+            results.push(decodeURIComponent(keyValuePair[1]).replace("+", " "));
+        }
+    }
+    if (results.length == 1) {
+        return results[0];
+    } else if (results.length > 1) {
+        result = results;
+    }
+    return result;
 }
 
-PortalApp.controller('LoginController', ['$scope', '$http', function ($scope, $http) {
-	$scope.cutomer = PortalApp.getLovalVar("customer");
-	if($scope.cutomer){
-		$scope.pageUrl = "./scheduler/schedules.html";
-	}else{
-		$scope.pageUrl = "./scheduler/login.html";
-	}
-	$scope.openSchelule = function(){
-		$scope.pageUrl = "./scheduler/scheduler.html";
-	};
-	$scope.exit = function(){
-		PortalApp.setLovalVar("customer", null);
-		$scope.pageUrl = "./scheduler/login.html";
-	};	
-	$scope.joinus = function(){
-		//PortalApp.setLovalVar("customer", null);
-		$scope.pageUrl = "./scheduler/joinus.html";
-	};	
-	$scope.openSchelules = function(){
-		$scope.pageUrl = "./scheduler/schedules.html";
-	};	
-	$scope.rememberPassword = function(email){
-		var emailValidation = /^([a-z0-9._%\-+]+@(?:[a-z0-9\-]+\.)+[a-z]{2,4}$)/;
-		if (!emailValidation.test(email) && email.length > 10){
-			alert ('E-mail inválido!\n')
-			return;
-		} else if (email.indexOf("@") <= 1) {
-			alert ('E-mail inválido!\n')
-			return;
-		} else {
-			//alert ('E-mail ok!\n')
-		}
-		$http.post(PortalApp.serviceUrl+"/../security/remember_password", {email : email}).success(function(results){
-	        if(results === 1 || results == "1"){
-				alert("Enviado com sucesso para " + email);
-	        }else{
-	          alert(eval(results));
-	        }
-		}).error(function(){
-			alert("Erro ao processar requisição!");
-		});	
-	}
-	$scope.login = function(user, password){
-		if (user == undefined || user == "") {
-			alert ("Por favor informe um email!");
-			return
-		}
-		if (password == undefined || password == "") {
-			alert ("Por favor informe uma senha!")
-			return
-		}
-		$http.post(PortalApp.serviceUrl+"/../mobile/api/login?email="+user+
-			"&password="+password+"&company="+gup('id')).then(function(rep){
-			var customer = PortalApp.parseRequest(rep.data);
-			customer.password = password;
-			PortalApp.setLovalVar("customer",customer);
-			$scope.pageUrl = "./scheduler/schedules.html";
-		}, function(){
-			alert("E-mail ou senha invalidos!");
-		});
-	};
+PortalApp.controller('LoginController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+    $scope.customer = PortalApp.getLovalVar("customer");
+    $scope.pageUrl = "./scheduler";
+    $scope.pageUrl += $scope.customer ? "/schedules.html" : "/login.html";
+    $scope.customerLogoUrl = "lobster/images/loader.gif";
+    
+    var searchParams = (new URL(window.location.href)).searchParams;
+    var customerId = searchParams.get('id');
+    if(customerId){
+        loadCustomerDetails(customerId).then(function(res){
+            var data = PortalApp.parseRequest(res.data);
+            $scope.customerLogoUrl = data.thumb_web;
+        });
+    } else {
+        $scope.customerLogoUrl = "http://ebelle.vilarika.com.br/images/logo_br_name_ebelle.png";
+    }
+    
+    function loadCustomerDetails(customerId){
+        return $http.get(PortalApp.serviceUrl + '/../mobile/api/companyInfo?id=' + customerId);
+    }
+    
+    $scope.openSchelule = function(){
+        $scope.pageUrl = "./scheduler/scheduler.html";
+    };
+    
+    $scope.exit = function(){
+        PortalApp.setLovalVar("customer", null);
+        $scope.pageUrl = "./scheduler/login.html";
+    }; 
+       
+    $scope.joinus = function(){
+        //PortalApp.setLovalVar("customer", null);
+        $scope.pageUrl = "./scheduler/joinus.html";
+    };    
+    
+    $scope.openSchelules = function(){
+        $scope.pageUrl = "./scheduler/schedules.html";
+    };   
+     
+    $scope.rememberPassword = function(email){
+        var emailValidation = /^([a-z0-9._%\-+]+@(?:[a-z0-9\-]+\.)+[a-z]{2,4}$)/;
+        if (!emailValidation.test(email) && email.length > 10){
+            alert ('E-mail inválido!\n')
+            return;
+        } else if (email.indexOf("@") <= 1) {
+            alert ('E-mail inválido!\n')
+            return;
+        } else {
+            //alert ('E-mail ok!\n')
+        }
+        $http.post(PortalApp.serviceUrl+"/../security/remember_password", {email : email}).success(function(results){
+            if(results === 1 || results == "1"){
+                alert("Enviado com sucesso para " + email);
+            }else{
+              alert(eval(results));
+            }
+        }).error(function(){
+            alert("Erro ao processar requisição!");
+        });    
+    }
+    $scope.login = function(user, password){
+        if (user == undefined || user == "") {
+            alert ("Por favor informe um email!");
+            return
+        }
+        if (password == undefined || password == "") {
+            alert ("Por favor informe uma senha!")
+            return
+        }
+        $http.post(PortalApp.serviceUrl+"/../mobile/api/login?email="+user+
+            "&password="+password+"&company="+gup('id')).then(function(rep){
+            var customer = PortalApp.parseRequest(rep.data);
+            customer.thumb_web = $scope.customerLogoUrl;
+            customer.password = password;
+            PortalApp.setLovalVar("customer",customer);
+            $scope.pageUrl = "./scheduler/schedules.html";
+        }, function(){
+            alert("E-mail ou senha invalidos!");
+        });
+    };
 }]);
 
 // FILE: app/controllers/Main.js
@@ -451,92 +470,96 @@ PortalApp.controller('PageUnitController', ['$scope', '$http', '$location', func
 
 // FILE: app/controllers/Scheduler.js
 PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope, $http) {
-	$scope.customer = PortalApp.getLovalVar("customer");
-	var start = encodeURIComponent(new Date().getDateBr());
-	var end = encodeURIComponent(new Date().getNextMonth().getDateBr());
-	$http.post(PortalApp.serviceUrl+"/../mobile/api/users?email="+
-		$scope.customer.email+
-		"&password="+$scope.customer.password+
-		"&company="+$scope.customer.company
-		).then(function(rep){
-		$scope.users = PortalApp.parseRequest(rep.data);
-	});
-	$scope.selectServices = function(){
+    $scope.customer = PortalApp.getLovalVar("customer");
+    $scope.customerLogoUrl = $scope.customer.thumb_web;
+    
+    var start = encodeURIComponent(new Date().getDateBr());
+    var end = encodeURIComponent(new Date().getNextMonth().getDateBr());
+    $http.post(PortalApp.serviceUrl+"/../mobile/api/users?email="+
+        $scope.customer.email+
+        "&password="+$scope.customer.password+
+        "&company="+$scope.customer.company
+        ).then(function(rep){
+        $scope.users = PortalApp.parseRequest(rep.data);
+    });
+    $scope.selectServices = function(){
 
-		$http.post(PortalApp.serviceUrl+"/../mobile/api/activities?email="+
-			$scope.customer.email+
-			"&password="+$scope.customer.password+
-			"&company="+$scope.customer.company+
-			"&user="+$scope.user.id).then(function(rep){
-			$scope.activityData = PortalApp.parseRequest(rep.data);
-			$scope.activityData.hours = getHours($scope.activityData.start, $scope.activityData.end, $scope.activityData.interval);
-			$scope.activityData.dates = getDates();
-		});
-	};
-	$scope.schedule = function(user, date, hour, activity){
-		var params = "?email="+$scope.customer.email+
-					 "&password="+$scope.customer.password+
-					 "&company="+$scope.customer.company+
-					 "&user="+user.id+
-					 "&customer="+$scope.customer.id+
-					 "&date="+encodeURIComponent(date.value)+
-					 "&hour_start="+encodeURIComponent(hour.name)+
-					 "&activity="+encodeURIComponent(activity.id);
-		$http.post(PortalApp.serviceUrl+"/../mobile/api/schedule"+params).then(function(rep){
-			alert("Agendamento efetuado com sucesso!");
-			$scope.openSchelules();
-		});
+        $http.post(PortalApp.serviceUrl+"/../mobile/api/activities?email="+
+            $scope.customer.email+
+            "&password="+$scope.customer.password+
+            "&company="+$scope.customer.company+
+            "&user="+$scope.user.id).then(function(rep){
+            $scope.activityData = PortalApp.parseRequest(rep.data);
+            $scope.activityData.hours = getHours($scope.activityData.start, $scope.activityData.end, $scope.activityData.interval);
+            $scope.activityData.dates = getDates();
+        });
+    };
+    $scope.schedule = function(user, date, hour, activity){
+        var params = "?email="+$scope.customer.email+
+                     "&password="+$scope.customer.password+
+                     "&company="+$scope.customer.company+
+                     "&user="+user.id+
+                     "&customer="+$scope.customer.id+
+                     "&date="+encodeURIComponent(date.value)+
+                     "&hour_start="+encodeURIComponent(hour.name)+
+                     "&activity="+encodeURIComponent(activity.id);
+        $http.post(PortalApp.serviceUrl+"/../mobile/api/schedule"+params).then(function(rep){
+            alert("Agendamento efetuado com sucesso!");
+            $scope.openSchelules();
+        });
 
-	};
+    };
 
 }]);
 var getDates = function(){
-	var ONE_DAY = 86400 * 1000;
-	var today = new Date();
-	var nextMonth = new Date().getNextMonth();
-	var dates = [];
-	// 02/07/2017 rigel - pega dia corrente - antes começava de amanhã
-	dates.push({name : today.getTextWhenShort(), value: today.getDateBr()});
-	while(today.getTime() < nextMonth.getTime()){
-		today.setTime(today.getTime()+ONE_DAY);
-		dates.push({name : today.getTextWhenShort(), value: today.getDateBr()});
-	}
-	return dates;
+    var ONE_DAY = 86400 * 1000;
+    var today = new Date();
+    var nextMonth = new Date().getNextMonth();
+    var dates = [];
+    // 02/07/2017 rigel - pega dia corrente - antes começava de amanhã
+    dates.push({name : today.getTextWhenShort(), value: today.getDateBr()});
+    while(today.getTime() < nextMonth.getTime()){
+        today.setTime(today.getTime()+ONE_DAY);
+        dates.push({name : today.getTextWhenShort(), value: today.getDateBr()});
+    }
+    return dates;
 };
 var getHours = function(start, end, interval){
-	var MINUTE_IN_MILES = 60*1000;
-	var date = new Date();
-	var dayToday = Date.toDay().getDate();
-	date.setHours(start);
-	date.setMinutes(0);
-	var increment = interval * MINUTE_IN_MILES;
-	var hours = [];
-	while(date.getHours() <= end && date.getDate() === dayToday ){
-		hours.push({name : getHourBr(date), value: date});
-		date.setTime(date.getTime()+increment);
-	}
-	return hours; 
+    var MINUTE_IN_MILES = 60*1000;
+    var date = new Date();
+    var dayToday = Date.toDay().getDate();
+    date.setHours(start);
+    date.setMinutes(0);
+    var increment = interval * MINUTE_IN_MILES;
+    var hours = [];
+    while(date.getHours() <= end && date.getDate() === dayToday ){
+        hours.push({name : getHourBr(date), value: date});
+        date.setTime(date.getTime()+increment);
+    }
+    return hours; 
 };
 
 // FILE: app/controllers/Schedules.js
 PortalApp.controller('SchedulesController', ['$scope', '$http', function ($scope, $http) {
-	$scope.customer = PortalApp.getLovalVar("customer");
-	var start = encodeURIComponent( (new Date()).getDateBr() );
-	var end = encodeURIComponent( (new Date()).getNextMonth().getDateBr() );
-	$http.post(PortalApp.serviceUrl+"/../mobile/api/history?email="+
-		$scope.customer.email+
-		"&password="+$scope.customer.password+
-		"&company="+$scope.customer.company+
-		"&startDate="+start+"&endDate="+end).then(function(rep){
-		$scope.history = PortalApp.parseRequest(rep.data);
-		$scope.history = $scope.history.map(function(iten){
-			iten.title = iten.title.split("<br/>")[1];
-			iten.start = FactoryDate.byTime(iten.start);
-			iten.start_hour = iten.start.getHourBr();
-			iten.start_date = iten.start.getDateBr();
-			return iten;
-		});
-	});
+    $scope.customer = PortalApp.getLovalVar("customer");
+    $scope.customerLogoUrl = $scope.customer.thumb_web;
+    
+    var start = encodeURIComponent( (new Date()).getDateBr() );
+    var end = encodeURIComponent( (new Date()).getNextMonth().getDateBr() );
+    $http.post(PortalApp.serviceUrl+"/../mobile/api/history?email="+
+        $scope.customer.email+
+        "&password="+$scope.customer.password+
+        "&company="+$scope.customer.company+
+        "&startDate="+start+"&endDate="+end).then(function(rep){
+        $scope.history = PortalApp.parseRequest(rep.data);
+        $scope.history = $scope.history.map(function(iten){
+            iten.title = iten.title.split("<br/>")[1];
+            iten.start = FactoryDate.byTime(iten.start);
+            iten.start_hour = iten.start.getHourBr();
+            iten.start_date = iten.start.getDateBr();
+            return iten;
+        });
+    });
 
 }]);
 

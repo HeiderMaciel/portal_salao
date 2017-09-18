@@ -1,5 +1,6 @@
 .forgot-password,
 .user-signup {
+    cursor: pointer;
     display: inline-block;
 }
 
