@@ -37,9 +37,14 @@ PortalApp.controller('JoinusController', ['$scope', '$http', function ($scope, $
 					 "&phone="+phone+
 					 "&email="+email+
 					 "&password="+password;
-		$http.post(PortalApp.serviceUrl+"/../mobile/api/joinus"+params).then(function(rep){
-			alert("Cadastramento efetuado com sucesso!");
-			$scope.openSchelules();
+		$http.post(PortalApp.serviceUrl+"/../mobile/api/joinus"+params).then(
+			function(results){
+	        if(results === 1 || results == "1"){
+				alert("Cadastramento efetuado com sucesso!");
+				$scope.login(email, password);
+	        }else{
+		        alert(results);
+	        }
 		});
 	};
 }]);
