@@ -8326,19 +8326,20 @@ PortalApp.controller('MainController', ['$scope', '$http', function ($scope, $ht
 
 // FILE: app/controllers/PageUnitController.js
 PortalApp.controller('PageUnitController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
-
-	$http.get(PortalApp.serviceUrl+"/unitByName?name="+$location.$$path.replace('/','')).then(function(repose){
-		$scope.unit = PortalApp.parseRequest(repose.data);
-		setTimeout(function(){
-			initializeMap();
-		}, 500);
-	});
+    var unit = (new URL(window.location.href)).searchParams.get('unit');
+    $http.get(PortalApp.serviceUrl+"/unitByName?name="+unit).then(function(repose){
+        $scope.unit = PortalApp.parseRequest(repose.data);
+        setTimeout(function(){
+            initializeMap();
+        }, 500);
+    });
 }]);
 
 // FILE: app/controllers/Scheduler.js
 PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope, $http) {
     $scope.customer = PortalApp.getLovalVar("customer");
     $scope.customerLogoUrl = $scope.customer.thumb_web;
+    $scope.date = (new Date());
 
     $scope.dateOptions = {
         minDate: (new Date()),

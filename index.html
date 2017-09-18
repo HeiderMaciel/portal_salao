@@ -97,7 +97,7 @@
           <span data-ng-controller='UnitController' class="row-fluid">
             <div  data-ng-repeat='unities in page.rows'>
               <div class="span3 text_center" data-ng-repeat='unit in unities'>
-                <a href="./company.html#/{{unit.siteName}}">
+                <a href="./company.html?unit={{unit.siteName}}">
                   <div class="boxfeature">
                     <div class="img_preview">
                       <img data-ng-src="{{unit.logo}}" alt="img_preview"/>
