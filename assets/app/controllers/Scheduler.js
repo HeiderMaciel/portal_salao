@@ -25,7 +25,7 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
             "&company="+$scope.customer.company+
             "&user="+$scope.user.id).then(function(rep){
             $scope.activityData = PortalApp.parseRequest(rep.data);
-            $scope.activityData.hours = getHours($scope.activityData.start, $scope.activityData.end, $scope.activityData.interval);
+            $scope.activityData.hours = getHours($scope.activityData.start, $scope.activityData.end, $scope.activityData.interval, $scope.activityData.hoptions);
             $scope.activityData.dates = getDates();
         });
     };
@@ -60,7 +60,11 @@ var getDates = function(){
     }
     return dates;
 };
-var getHours = function(start, end, interval){
+// Rigel - 29/01/2018
+// estes parms de start end interval, poderiam sair
+// tanto daqui qto da api, deixei para demonstrar
+// como era antes - sem verificar agendamentos e bloqueios
+var getHours = function(start, end, interval, hoptions){
     var MINUTE_IN_MILES = 60*1000;
     var date = new Date();
     var dayToday = Date.toDay().getDate();
@@ -68,9 +72,21 @@ var getHours = function(start, end, interval){
     date.setMinutes(0);
     var increment = interval * MINUTE_IN_MILES;
     var hours = [];
+    // rigel 29/01/2018 - agora vem da api e verifica
+    // agendamentos e bloqueios para o proifssional escolhido
+    for (var i = 0, len = hoptions.length; i < len; i++) {
+        date.setHours(hoptions[i].hour);
+        date.setMinutes(hoptions[i].min);
+        hours.push({name : getHourBr(date), value: date});
+    }
+    // Antes o Mateus ignorava os atendiemntos e gerava
+    // todas as possibilidades entre inicio e fim com o intervalo
+    // vou deixar comeentado aqui em baixo
+/*
     while(date.getHours() <= end && date.getDate() === dayToday ){
         hours.push({name : getHourBr(date), value: date});
         date.setTime(date.getTime()+increment);
     }
+*/
     return hours; 
 };
