@@ -70,14 +70,19 @@ PortalApp.controller('LoginController', ['$scope', '$http', '$location', functio
         } else {
             //alert ('E-mail ok!\n')
         }
-        $http.post(PortalApp.serviceUrl+"/../security/remember_password", {email : email}).success(function(results){
+        $http.post(PortalApp.serviceUrl+
+            "/../security/remember_customer_password", 
+            {email : email}).then(function(results){
+//alert ("vaiii antes " + PortalApp.parseRequest(results))
             if(results === 1 || results == "1"){
                 alert("Enviado com sucesso para " + email);
             }else{
-              alert(eval(results));
+//              alert("vaiii ====" + eval(results));
             }
-        }).error(function(){
-            alert("Erro ao processar requisição!");
+// dava erro no success is not a function troquei para then             
+// e o result nem o eval estão razoáveis
+//        }).error(function(){
+//            alert("Erro ao processar requisição!");
         });    
     }
     $scope.login = function(user, password){
