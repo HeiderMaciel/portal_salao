@@ -34,7 +34,7 @@
                   -->
                     <br/>
                     <label>Selecione uma Data</label>
-                    <div ng-show="user" uib-datepicker class="input-block-level" ng-model="date" datepicker-options="dateOptions"></div>
+                    <div ng-show="user" uib-datepicker class="input-block-level" data-ng-change="selectHoptions(activity)" ng-model="date" datepicker-options="dateOptions"></div>
                     <div ng-show="!user"><span>Selecione um profissional primeiro</span></div>
                 </div>
               </div>
@@ -42,7 +42,8 @@
               <div class="span6">
                 <div class="panel">
                   <label>Selecione um Serviço</label>
-                  <select class="input-block-level" required data-ng-model='activity' data-ng-options="a.name for a in activityData.activities">
+                  <select class="input-block-level" required data-ng-model='activity' 
+                  data-ng-bind='activityid' data-ng-options="a.name for a in activityData.activities">
                   </select>
                   <br/>
                     <label>Selecione um Horário</label>

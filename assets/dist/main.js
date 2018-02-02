@@ -8287,12 +8287,14 @@ PortalApp.controller('LoginController', ['$scope', '$http', '$location', functio
         $http.post(PortalApp.serviceUrl+
             "/../security/remember_customer_password", 
             {email : email}).then(function(results){
-alert ("vaiii antes " + PortalApp.parseRequest(results))
+//alert ("vaiii antes " + PortalApp.parseRequest(results))
             if(results === 1 || results == "1"){
                 alert("Enviado com sucesso para " + email);
             }else{
-              alert("vaiii ====" + eval(results));
+//              alert("vaiii ====" + eval(results));
             }
+// dava erro no success is not a function troquei para then             
+// e o result nem o eval estão razoáveis
 //        }).error(function(){
 //            alert("Erro ao processar requisição!");
         });    
@@ -8344,6 +8346,8 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
     $scope.customerLogoUrl = $scope.customer.thumb_web;
     $scope.date = (new Date());
 
+    $scope.activityid = 134336;
+
     $scope.dateOptions = {
         minDate: (new Date()),
         maxDate: (new Date()).getNextMonth()
@@ -8359,17 +8363,36 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
         $scope.users = PortalApp.parseRequest(rep.data);
     });
     $scope.selectServices = function(){
-
-        $http.post(PortalApp.serviceUrl+"/../mobile/api/activities?email="+
-            $scope.customer.email+
+        $http.post(PortalApp.serviceUrl+"/../mobile/api/hoptions"+
+            "?email="+$scope.customer.email+
             "&password="+$scope.customer.password+
             "&company="+$scope.customer.company+
-            "&user="+$scope.user.id).then(function(rep){
+            "&user="+$scope.user.id+
+            "&date="+encodeURIComponent($scope.date.getDateBr())).then(function(rep){
             $scope.activityData = PortalApp.parseRequest(rep.data);
             $scope.activityData.hours = getHours($scope.activityData.start, $scope.activityData.end, $scope.activityData.interval, $scope.activityData.hoptions);
             $scope.activityData.dates = getDates();
         });
     };
+    $scope.selectHoptions = function(activity){
+        // tentativa de preservar a atividade qd troca a
+        // data, o id vem, mas não consegui setar
+        //alert ("vaiiiii act.id " + activity.id + "   " + $scope.activityid)
+        //var actAux = activity.id
+        $http.post(PortalApp.serviceUrl+"/../mobile/api/hoptions"+
+            "?email="+$scope.customer.email+
+            "&password="+$scope.customer.password+
+            "&company="+$scope.customer.company+
+            "&user="+$scope.user.id+
+            "&date="+encodeURIComponent($scope.date.getDateBr())).then(function(rep){
+            $scope.activityData = PortalApp.parseRequest(rep.data);
+            $scope.activityData.hours = getHours($scope.activityData.start, $scope.activityData.end, $scope.activityData.interval, $scope.activityData.hoptions);
+//            $scope.activityData.dates = getDates();
+        //activity.id = actAux
+        //$scope.activityid = actAux;
+        });
+    };
+
     $scope.schedule = function(user, date, hour, activity){
         var params = "?email="+$scope.customer.email+
                      "&password="+$scope.customer.password+
