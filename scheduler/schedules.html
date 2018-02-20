@@ -27,16 +27,20 @@
               <table class='table table-striped'>
                 <thead>
                   <tr>
-                    <th>Atendimento</th>
-                    <th>Data</th>
+                    <th title="Atendimento, serviço, procedimento">Atend</th>
+                    <th title="profissional">Prof</th>
+                    <th title="data/hora">Data</th>
                     <th>Status</th>
+                    <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr data-ng-repeat="item in history">
                     <td data-ng-bind-html='item.title'></td>
-                    <td data-ng-bind='item.start_date+"  "+item.start_hour'></td>
-                    <td data-ng-bind='item.status'></td>
+                    <td data-ng-bind='item.userName'></td>
+                    <td data-ng-bind='item.start_date.substring(0,5)+" "+item.start_hour'></td>
+                    <td data-ng-bind-html='trStatusdecode(item.status,item.status2)'></td>
+                    <td><button class="btn btn-primary flat" data-ng-click="deleteItem(item.id, item.status)"><i class="icon-trash"></i> Excluir</button></td>
                   </tr>
                 </tbody>
               </table>
