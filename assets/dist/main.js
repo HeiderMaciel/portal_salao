@@ -8274,6 +8274,10 @@ PortalApp.controller('LoginController', ['$scope', '$http', '$location', functio
     };   
      
     $scope.rememberPassword = function(email){
+        if (email == undefined || email == "") {
+            alert ("Por favor informe um email!");
+            return
+        }
         var emailValidation = /^([a-z0-9._%\-+]+@(?:[a-z0-9\-]+\.)+[a-z]{2,4}$)/;
         if (!emailValidation.test(email) && email.length > 10){
             alert ('E-mail inválido!\n')
@@ -8286,17 +8290,12 @@ PortalApp.controller('LoginController', ['$scope', '$http', '$location', functio
         }
         $http.post(PortalApp.serviceUrl+
             "/../security/remember_customer_password", 
-            {email : email}).then(function(results){
-//alert ("vaiii antes " + PortalApp.parseRequest(results))
-            if(results === 1 || results == "1"){
+            {email : email, company : gup('id')}).then(function(results){
+            if(results.data === 1 || results.data == "1"){
                 alert("Enviado com sucesso para " + email);
             }else{
-//              alert("vaiii ====" + eval(results));
+                alert(results.data);
             }
-// dava erro no success is not a function troquei para then             
-// e o result nem o eval estão razoáveis
-//        }).error(function(){
-//            alert("Erro ao processar requisição!");
         });    
     }
     $scope.login = function(user, password){
@@ -8614,7 +8613,6 @@ PortalApp.controller('UnitController', ['$scope', '$http', '$location', function
 
 // FILE: app/controllers/joinus.js
 PortalApp.controller('JoinusController', ['$scope', '$http', function ($scope, $http) {
-	$scope.phoneMask = "(999) 999-9999 ext. ?9?9?9";
 	$scope.joinus = function(name, mobilephone, 
 		phone, email, password, password2){
 		if (email == undefined || email == "") {
