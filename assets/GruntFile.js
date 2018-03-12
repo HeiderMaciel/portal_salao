@@ -3,6 +3,7 @@ module.exports = function(grunt) {
     var depPath = ['app/bower_components'];
     var libPaths = [
         depPath + '/angular/angular.min.js', 
+        depPath + '/ngMask/dist/ngMask.min.js', 
         depPath + '/angular-sanitize/angular-sanitize.min.js', 
         depPath + '/javascript-md5/js/md5.min.js',
         depPath + '/angular-bootstrap/ui-bootstrap-tpls.js'

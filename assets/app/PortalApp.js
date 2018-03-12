@@ -1,4 +1,4 @@
-var PortalApp = angular.module('PortalApp', ['ngSanitize', 'ui.bootstrap']);
+var PortalApp = angular.module('PortalApp', ['ngSanitize', 'ui.bootstrap', 'ngMask']);
 PortalApp.parseRequest = function(data) {
     data = data.substring(0, data.length - 1);
     return JSON.parse(data);
