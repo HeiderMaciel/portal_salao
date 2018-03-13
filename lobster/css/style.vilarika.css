@@ -1,9 +1,11 @@
 .forgot-password,
-.user-signup {
+.user-signup,
+.back-to-login {
     cursor: pointer;
     display: inline-block;
 }
 
+.back-to_login { float: left; }
 .forgot-password { float: left; }
 .user-signup { float: right; }
 
