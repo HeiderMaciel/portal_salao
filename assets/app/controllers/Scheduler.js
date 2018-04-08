@@ -20,37 +20,57 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
         $scope.users = PortalApp.parseRequest(rep.data);
     });
     $scope.selectServices = function(){
-        $http.post(PortalApp.serviceUrl+"/../mobile/api/hoptions"+
+        $http.post(PortalApp.serviceUrl+"/../mobile/api/activities"+
             "?email="+$scope.customer.email+
             "&password="+$scope.customer.password+
             "&company="+$scope.customer.company+
-            "&user="+$scope.user.id+
-            "&date="+encodeURIComponent($scope.date.getDateBr())).then(function(rep){
+            "&user="+$scope.user.id
+            //+
+            //"&date="+encodeURIComponent($scope.date.getDateBr())+
+            //"&activity=0"
+            ).then(function(rep){
             $scope.activityData = PortalApp.parseRequest(rep.data);
-            $scope.activityData.hours = getHours($scope.activityData.start, $scope.activityData.end, $scope.activityData.interval, $scope.activityData.hoptions);
-            $scope.activityData.dates = getDates();
+            //$scope.activityData.hours = getHours($scope.activityData.start, $scope.activityData.end, $scope.activityData.interval, $scope.activityData.hoptions);
+            //$scope.activityData.dates = getDates();
         });
     };
     $scope.selectHoptions = function(activity){
         // tentativa de preservar a atividade qd troca a
         // data, o id vem, mas não consegui setar
-        //alert ("vaiiiii act.id " + activity.id + "   " + $scope.activityid)
+        //alert ("vaiiiii act.id " + activity + "   " + $scope.activityid)
         //var actAux = activity.id
-        $http.post(PortalApp.serviceUrl+"/../mobile/api/hoptions"+
-            "?email="+$scope.customer.email+
-            "&password="+$scope.customer.password+
-            "&company="+$scope.customer.company+
-            "&user="+$scope.user.id+
-            "&date="+encodeURIComponent($scope.date.getDateBr())).then(function(rep){
-            $scope.activityData = PortalApp.parseRequest(rep.data);
-            $scope.activityData.hours = getHours($scope.activityData.start, $scope.activityData.end, $scope.activityData.interval, $scope.activityData.hoptions);
-//            $scope.activityData.dates = getDates();
-        //activity.id = actAux
-        //$scope.activityid = actAux;
-        });
+        if (activity != undefined && activity != "undefined") {
+            $http.post(PortalApp.serviceUrl+"/../mobile/api/hoptions"+
+                "?email="+$scope.customer.email+
+                "&password="+$scope.customer.password+
+                "&company="+$scope.customer.company+
+                "&user="+$scope.user.id+
+                "&date="+encodeURIComponent($scope.date.getDateBr())+
+                "&activity="+encodeURIComponent(activity.id)).then(function(rep){
+                $scope.hoptionsData = PortalApp.parseRequest(rep.data);
+                $scope.hoptionsData.hours = getHours($scope.hoptionsData.start, 
+                    $scope.hoptionsData.end, $scope.hoptionsData.interval, $scope.hoptionsData.hoptions);
+    //            $scope.activityData.dates = getDates();
+            //activity.id = actAux
+            //$scope.activityid = actAux;
+            });
+        }   
     };
 
     $scope.schedule = function(user, date, hour, activity){
+        if (user == undefined || user == "") {
+            alert ("Por favor informe um profissional!");
+            return
+        }
+        if (activity == undefined || activity == "") {
+            alert ("Por favor informe um serviço/procedimento!");
+            return
+        }
+        if (hour == undefined || hour == "") {
+            alert ("Por favor informe um horário!");
+            return
+        }
+
         var params = "?email="+$scope.customer.email+
                      "&password="+$scope.customer.password+
                      "&company="+$scope.customer.company+

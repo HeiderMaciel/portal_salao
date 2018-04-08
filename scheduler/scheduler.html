@@ -42,18 +42,20 @@
               <div class="span6">
                 <div class="panel">
                   <label>Selecione um Serviço</label>
-                  <select class="input-block-level" required data-ng-model='activity' 
+                  <select class="input-block-level" required data-ng-model='activity' data-ng-change="selectHoptions(activity)" 
                   data-ng-bind='activityid' data-ng-options="a.name for a in activityData.activities">
                   </select>
                   <br/>
                     <label>Selecione um Horário</label>
-                    <select class="input-block-level" required data-ng-model='hour' data-ng-options="a.name for a in activityData.hours">
+                    <select class="input-block-level" required data-ng-model='hour' data-ng-options="a.name for a in hoptionsData.hours">
                     </select>                  
                 </div>
               </div>
             </div>
+            <div class="panel">
             <div class="row-fluid">
                 <button type="button" data-ng-click='schedule(user, date, hour, activity)' class="btn btn-info btn-large input-block-level flat">Agendar</button>
+            </div>
             </div>
             </form><!-- End Form-->
           </div>
