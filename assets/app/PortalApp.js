@@ -12,6 +12,8 @@ PortalApp.getLovalVar = function(name) {
 
 if (document.location.href.indexOf("local") != -1) {
     PortalApp.serviceUrl = "http://localhost:7171/site";//local
+} else if (document.location.href.indexOf("gerir.app") != -1) {
+    PortalApp.serviceUrl = "https://gerir.app/site";//production
 } else {
     PortalApp.serviceUrl = "http://ebelle.vilarika.com.br/site";//production
 }
