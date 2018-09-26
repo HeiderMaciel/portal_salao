@@ -30,6 +30,7 @@ PortalApp.controller('JoinusController', ['$scope', '$http', function ($scope, $
 			doc = "";
 		}
 		var params = "?company="+gup('id')+
+					 "&unit="+gup('unit')+
 					 "&name="+name+
 					 "&mobilephone="+mobilephone+
 					 "&phone="+phone+

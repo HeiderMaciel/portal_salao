@@ -1,7 +1,13 @@
 PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope, $http) {
     $scope.customer = PortalApp.getLovalVar("customer");
     $scope.customerLogoUrl = $scope.customer.thumb_web;
+    if ($scope.customer.company == 334) {
+        $scope.date_simple = true;
+    } else {
+        $scope.date_simple = false;
+    }
     $scope.date = (new Date());
+    $scope.date_old = (new Date());
 
     $scope.activityid = 134336;
 
@@ -15,6 +21,7 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
     $http.post(PortalApp.serviceUrl+"/../mobile/api/users?email="+
         $scope.customer.email+
         "&password="+$scope.customer.password+
+        "&unit="+gup('unit')+
         "&company="+$scope.customer.company
         ).then(function(rep){
         $scope.users = PortalApp.parseRequest(rep.data);
@@ -23,6 +30,7 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
         $http.post(PortalApp.serviceUrl+"/../mobile/api/activities"+
             "?email="+$scope.customer.email+
             "&password="+$scope.customer.password+
+            "&unit="+gup('unit')+
             "&company="+$scope.customer.company+
             "&user="+$scope.user.id
             //+
@@ -31,10 +39,18 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
             ).then(function(rep){
             $scope.activityData = PortalApp.parseRequest(rep.data);
             //$scope.activityData.hours = getHours($scope.activityData.start, $scope.activityData.end, $scope.activityData.interval, $scope.activityData.hoptions);
+            //console.log($scope.activityData)
             //$scope.activityData.dates = getDates();
         });
     };
+
     $scope.selectHoptions = function(activity){
+        var dateAux = encodeURIComponent($scope.date.getDateBr());
+        if ($scope.date_old.value) {
+            // alert ("vaiii " + $scope.date_old.value)
+            // seleção data_old foi usada
+            dateAux = encodeURIComponent($scope.date_old.value)
+        }
         // tentativa de preservar a atividade qd troca a
         // data, o id vem, mas não consegui setar
         //alert ("vaiiiii act.id " + activity + "   " + $scope.activityid)
@@ -43,9 +59,10 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
             $http.post(PortalApp.serviceUrl+"/../mobile/api/hoptions"+
                 "?email="+$scope.customer.email+
                 "&password="+$scope.customer.password+
+                "&unit="+gup('unit')+
                 "&company="+$scope.customer.company+
                 "&user="+$scope.user.id+
-                "&date="+encodeURIComponent($scope.date.getDateBr())+
+                "&date="+dateAux+
                 "&activity="+encodeURIComponent(activity.id)).then(function(rep){
                 $scope.hoptionsData = PortalApp.parseRequest(rep.data);
                 $scope.hoptionsData.hours = getHours($scope.hoptionsData.start, 
@@ -74,6 +91,7 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
         var params = "?email="+$scope.customer.email+
                      "&password="+$scope.customer.password+
                      "&company="+$scope.customer.company+
+                     "&unit="+gup('unit')+
                      "&user="+user.id+
                      "&customer="+$scope.customer.id+
                      "&date="+encodeURIComponent(date.getDateBr())+

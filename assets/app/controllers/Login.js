@@ -21,6 +21,13 @@ function gup(name) {
 }
 
 PortalApp.controller('LoginController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+
+//.controller('mainCtrl', function($scope, $templateCache) {
+  $scope.clearCache = function() { 
+    $templateCache.removeAll();
+  }
+//});
+
     $scope.customer = PortalApp.getLovalVar("customer");
     $scope.pageUrl = "./scheduler";
     $scope.pageUrl += $scope.customer ? "/schedules.html" : "/login.html";
@@ -94,7 +101,9 @@ PortalApp.controller('LoginController', ['$scope', '$http', '$location', functio
             return
         }
         $http.post(PortalApp.serviceUrl+"/../mobile/api/login?email="+user+
-            "&password="+md5(password.toLowerCase())+"&company="+gup('id')).then(function(rep){
+            "&password="+md5(password.toLowerCase())+
+            "&company="+gup('id')+
+            "&unit="+gup('unit')).then(function(rep){
             var customer = PortalApp.parseRequest(rep.data);
             customer.thumb_web = $scope.customerLogoUrl;
             customer.password = md5(password.toLowerCase());

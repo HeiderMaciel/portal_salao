@@ -8157,6 +8157,8 @@ PortalApp.getLovalVar = function(name) {
 
 if (document.location.href.indexOf("local") != -1) {
     PortalApp.serviceUrl = "http://localhost:7171/site";//local
+} else if (document.location.href.indexOf("gerir.app") != -1) {
+    PortalApp.serviceUrl = "https://gerir.app/site";//production
 } else {
     PortalApp.serviceUrl = "http://ebelle.vilarika.com.br/site";//production
 }
@@ -8239,6 +8241,13 @@ function gup(name) {
 }
 
 PortalApp.controller('LoginController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+
+//.controller('mainCtrl', function($scope, $templateCache) {
+  $scope.clearCache = function() { 
+    $templateCache.removeAll();
+  }
+//});
+
     $scope.customer = PortalApp.getLovalVar("customer");
     $scope.pageUrl = "./scheduler";
     $scope.pageUrl += $scope.customer ? "/schedules.html" : "/login.html";
@@ -8312,7 +8321,9 @@ PortalApp.controller('LoginController', ['$scope', '$http', '$location', functio
             return
         }
         $http.post(PortalApp.serviceUrl+"/../mobile/api/login?email="+user+
-            "&password="+md5(password.toLowerCase())+"&company="+gup('id')).then(function(rep){
+            "&password="+md5(password.toLowerCase())+
+            "&company="+gup('id')+
+            "&unit="+gup('unit')).then(function(rep){
             var customer = PortalApp.parseRequest(rep.data);
             customer.thumb_web = $scope.customerLogoUrl;
             customer.password = md5(password.toLowerCase());
@@ -8347,7 +8358,13 @@ PortalApp.controller('PageUnitController', ['$scope', '$http', '$location', func
 PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope, $http) {
     $scope.customer = PortalApp.getLovalVar("customer");
     $scope.customerLogoUrl = $scope.customer.thumb_web;
+    if ($scope.customer.company == 334) {
+        $scope.date_simple = true;
+    } else {
+        $scope.date_simple = false;
+    }
     $scope.date = (new Date());
+    $scope.date_old = (new Date());
 
     $scope.activityid = 134336;
 
@@ -8361,6 +8378,7 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
     $http.post(PortalApp.serviceUrl+"/../mobile/api/users?email="+
         $scope.customer.email+
         "&password="+$scope.customer.password+
+        "&unit="+gup('unit')+
         "&company="+$scope.customer.company
         ).then(function(rep){
         $scope.users = PortalApp.parseRequest(rep.data);
@@ -8369,6 +8387,7 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
         $http.post(PortalApp.serviceUrl+"/../mobile/api/activities"+
             "?email="+$scope.customer.email+
             "&password="+$scope.customer.password+
+            "&unit="+gup('unit')+
             "&company="+$scope.customer.company+
             "&user="+$scope.user.id
             //+
@@ -8377,10 +8396,18 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
             ).then(function(rep){
             $scope.activityData = PortalApp.parseRequest(rep.data);
             //$scope.activityData.hours = getHours($scope.activityData.start, $scope.activityData.end, $scope.activityData.interval, $scope.activityData.hoptions);
+            //console.log($scope.activityData)
             //$scope.activityData.dates = getDates();
         });
     };
+
     $scope.selectHoptions = function(activity){
+        var dateAux = encodeURIComponent($scope.date.getDateBr());
+        if ($scope.date_old.value) {
+            // alert ("vaiii " + $scope.date_old.value)
+            // seleção data_old foi usada
+            dateAux = encodeURIComponent($scope.date_old.value)
+        }
         // tentativa de preservar a atividade qd troca a
         // data, o id vem, mas não consegui setar
         //alert ("vaiiiii act.id " + activity + "   " + $scope.activityid)
@@ -8389,9 +8416,10 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
             $http.post(PortalApp.serviceUrl+"/../mobile/api/hoptions"+
                 "?email="+$scope.customer.email+
                 "&password="+$scope.customer.password+
+                "&unit="+gup('unit')+
                 "&company="+$scope.customer.company+
                 "&user="+$scope.user.id+
-                "&date="+encodeURIComponent($scope.date.getDateBr())+
+                "&date="+dateAux+
                 "&activity="+encodeURIComponent(activity.id)).then(function(rep){
                 $scope.hoptionsData = PortalApp.parseRequest(rep.data);
                 $scope.hoptionsData.hours = getHours($scope.hoptionsData.start, 
@@ -8420,6 +8448,7 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
         var params = "?email="+$scope.customer.email+
                      "&password="+$scope.customer.password+
                      "&company="+$scope.customer.company+
+                     "&unit="+gup('unit')+
                      "&user="+user.id+
                      "&customer="+$scope.customer.id+
                      "&date="+encodeURIComponent(date.getDateBr())+
@@ -8478,6 +8507,7 @@ var getHours = function(start, end, interval, hoptions){
     return hours; 
 };
 
+
 // FILE: app/controllers/Schedules.js
 PortalApp.controller('SchedulesController', ['$scope', '$http', function ($scope, $http) {
     $scope.customer = PortalApp.getLovalVar("customer");
@@ -8511,7 +8541,7 @@ PortalApp.controller('SchedulesController', ['$scope', '$http', function ($scope
         title ='excluído'
       } else if (status == '6') {
         statstr = 'Confirmed'
-        title ='confirmado1'
+        title ='confirmado'
       } else if (status == '7') {
         statstr = 'PreOpen'
         title ='pré agendado'
@@ -8531,6 +8561,7 @@ PortalApp.controller('SchedulesController', ['$scope', '$http', function ($scope
             $scope.customer.email+
             "&password="+$scope.customer.password+
             "&company="+$scope.customer.company+
+            "&unit="+gup('unit')+
             "&startDate="+start+"&endDate="+end).then(function(rep){
             $scope.history = PortalApp.parseRequest(rep.data);
             $scope.history = $scope.history.map(function(item){
@@ -8560,6 +8591,7 @@ PortalApp.controller('SchedulesController', ['$scope', '$http', function ($scope
             $scope.customer.email+
             "&password="+$scope.customer.password+
             "&company="+$scope.customer.company+
+            "&unit="+gup('unit')+
             "&trid="+id+
             "&status="+status).then(function(rep){
                 alert("Agendamento " + msgout + " com sucesso!");
@@ -8668,6 +8700,7 @@ PortalApp.controller('JoinusController', ['$scope', '$http', function ($scope, $
 			doc = "";
 		}
 		var params = "?company="+gup('id')+
+					 "&unit="+gup('unit')+
 					 "&name="+name+
 					 "&mobilephone="+mobilephone+
 					 "&phone="+phone+

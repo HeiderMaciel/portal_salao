@@ -30,7 +30,7 @@ PortalApp.controller('SchedulesController', ['$scope', '$http', function ($scope
         title ='excluído'
       } else if (status == '6') {
         statstr = 'Confirmed'
-        title ='confirmado1'
+        title ='confirmado'
       } else if (status == '7') {
         statstr = 'PreOpen'
         title ='pré agendado'
@@ -50,6 +50,7 @@ PortalApp.controller('SchedulesController', ['$scope', '$http', function ($scope
             $scope.customer.email+
             "&password="+$scope.customer.password+
             "&company="+$scope.customer.company+
+            "&unit="+gup('unit')+
             "&startDate="+start+"&endDate="+end).then(function(rep){
             $scope.history = PortalApp.parseRequest(rep.data);
             $scope.history = $scope.history.map(function(item){
@@ -79,6 +80,7 @@ PortalApp.controller('SchedulesController', ['$scope', '$http', function ($scope
             $scope.customer.email+
             "&password="+$scope.customer.password+
             "&company="+$scope.customer.company+
+            "&unit="+gup('unit')+
             "&trid="+id+
             "&status="+status).then(function(rep){
                 alert("Agendamento " + msgout + " com sucesso!");
