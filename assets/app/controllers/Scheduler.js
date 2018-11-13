@@ -97,8 +97,14 @@ PortalApp.controller('SchedulerController', ['$scope', '$http', function ($scope
                      "&date="+encodeURIComponent(date.getDateBr())+
                      "&hour_start="+encodeURIComponent(hour.name)+
                      "&activity="+encodeURIComponent(activity.id);
-        $http.post(PortalApp.serviceUrl+"/../mobile/api/schedule"+params).then(function(rep){
-            alert("Agendamento efetuado com sucesso!");
+        $http.post(PortalApp.serviceUrl+"/../mobile/api/schedule"+params).then(function(results){
+                // rodar com f12 mostra estrutura do objeto
+                //console.log(results)
+            if(results.data === 1 || results.data == "1"){            
+                alert("Agendamento efetuado com sucesso!");
+            } else {
+                alert(results.data);
+            }
             $scope.openSchelules();
         });
 
